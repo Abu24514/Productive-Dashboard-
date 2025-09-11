@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Font Awesome icons link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <!-- External CSS file -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- =================== NAVBAR =================== -->
+    <nav>
+      <div id="nav-list">
+        <!-- App logo/icon with title -->
+        <i class="fa-solid fa-lightbulb"></i>
+        <p>Productive Dashboard</p>
+      </div>
+      <!-- Theme toggle button (light/dark mode) -->
+      <div class="change">
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox" class="toggleBtn"></label>
+      </div>
+    </nav>
+
+    <!-- =================== MAIN CONTENT =================== -->
+    <main>
+      <!-- Section: Date and Weather Display -->
+      <section class="dates-wheather">
+        <div class="dates">Dates/time</div>
+        <div class="wheather">wheather</div>
+      </section>
+
+      <!-- Section: Marquee Scrolling Text (features preview) -->
+      <section class="view-2">
+        <div class="marquee">
+          <!-- First loop of text -->
+          <div class="text">
+            <p>Todo List</p>
+            <p>Motivation Quotes</p>
+            <p>Daily Planner</p>
+            <p>Pomodore</p>
+          </div>
+          <!-- Second loop of text (for infinite scroll effect) -->
+          <div class="text">
+            <p>Todo List</p>
+            <p>Motivation Quotes</p>
+            <p>Daily Planner</p>
+            <p>Pomodore</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Feature Cards -->
+      <section class="allElems">
+        <!-- Card 01 - Todo List -->
+        <div class="todo elem" id="0">
+          <img
+            src="https://images.unsplash.com/photo-1677249490921-3246e81f19e3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y3J5c3RhbHMlMjAzZHxlbnwwfHwwfHx8MA%3D%3D"
+            alt="To-do list image"
+          />
+          <h2>To do List</h2>
+        </div>
+
+        <!-- Card 02 - Daily Planner -->
+        <div class="daily elem" id="1">
+          <img
+            src="https://images.unsplash.com/photo-1653549892896-dde02867edee?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fDNkfGVufDB8fDB8fHww"
+            alt="Daily planner image"
+          />
+          <h2>Daily Planner</h2>
+        </div>
+
+        <!-- Card 03 - Motivation -->
+        <div class="moti elem" id="2">
+          <img
+            src="https://images.unsplash.com/photo-1707418763466-116f0309873c?q=80&w=1242&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Motivational image"
+          />
+          <h2>Motivation</h2>
+        </div>
+
+        <!-- Card 04 - Pomodoro Timer -->
+        <div class="pomo elem" id="3">
+          <img
+            src="https://images.unsplash.com/photo-1644318295821-12c4ddf2a36e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fDNkfGVufDB8fDB8fHww"
+            alt="Pomodoro timer image"
+          />
+          <h2>Pomodore</h2>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
