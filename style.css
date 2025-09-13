@@ -305,24 +305,40 @@ main {
 
 .back {
   position: absolute;
-  background-color: var(--mt-card);
-  padding: 8px 12px;
-  color: var(--color-bg);
   top: 32px;
   right: 30px;
-  border: none;
+  padding: 8px 12px;
   border-radius: 700px;
-  transition: all ease 0.4s;
+  color: var(--color-bg);
+  background-color: var(--color-accent);
   font-size: clamp(0.3rem, 2.5vw, 1rem);
   font-weight: 600;
   text-transform: capitalize;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease , scale 0.3s ease;
+  border: none;
+}
+
+.back::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.448);
+  transform: skewX(-20deg);
+  transition: all 0.5s ease;
+}
+.back:hover::after {
+  left: 200%;
 }
 .back:hover {
   scale: 1.1;
-  background-color: var(--btn-close);
-  cursor: pointer;
   color: var(--color-text);
+  background:var(--btn-delete);
 }
+
 
 /* Keyframes for moving marquee */
 @keyframes marquee {
