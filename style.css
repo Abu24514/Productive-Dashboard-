@@ -291,6 +291,103 @@ main {
   padding: 0 0.9rem;
 }
 
+/* -------------- Motivational Page-------------- */
+
+.motivation-fullPage {
+  display: block;
+}
+
+.motivational-container {
+  /* background-color: red; */
+  margin-top: 90px;
+  display: flex;
+  justify-content: center;
+  padding: 0.6rem 0.8rem;
+}
+.motivation-card {
+  background: var(--mt-card);
+  color: var(--text-input1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: clamp(30vw, 90vw, 60vw);
+  display: flex;
+  flex-direction: column;
+  column-gap: 3.5vw;
+  row-gap: 1.5vw;
+  box-shadow: 0 10px 5px var(--color-bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3 ease;
+}
+.motivation-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 30px var(--text-input1);
+}
+
+.mt-top {
+  display: flex;
+  justify-content: space-between;
+}
+.quote-tag {
+  background: #041632e4;
+  color: var(--color-text);
+  padding: clamp(0.5rem, 5vw, 0.8rem) clamp(0.6rem, 8vw, 0.8rem);
+  border-radius: 0.5rem;
+  font-size: clamp(0.2rem, 2.5vw, 1rem);
+  letter-spacing: 1px;
+}
+.quote-img {
+  width: 50px;
+  height: 40px;
+  object-fit: cover;
+  opacity: 0.4;
+}
+.motivation-card p {
+  font-style: italic;
+  font-weight: 400;
+  text-align: center;
+  font-size: clamp(0.2rem, 5vw, 1.5rem);
+  min-height: 50px;
+  color: var(--text-input2);
+  padding: 0.5rem;
+  line-height: 1.5;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.bottom-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.nav-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.nav-buttons button {
+  background: var(--mt-q-auth);
+  border: none;
+  outline: none;
+  color: var(--color-text);
+  /* padding: 0.4rem 0.9rem; */
+  padding: clamp(0.1rem, 5vw, 0.4rem) clamp(0.1rem, 8vw, 0.5rem);
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-buttons button:hover {
+  transform: scale(1.1);
+  background: var(--btn-close);
+}
+
+.author-tag {
+  text-align: center;
+  font-size: clamp(0.4rem, 5vw, 1.5rem);
+  letter-spacing: 0.5px;
+  font-weight: bolder;
+  color: #070707;
+  font-family: monospace;
+}
+
 /* ================= FULL ELEMS EACH SECTIONS ================= */
 .fullElems {
   background-color: var(--color-bg);
@@ -315,7 +412,7 @@ main {
   font-weight: 600;
   text-transform: capitalize;
   overflow: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease , scale 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, scale 0.3s ease;
   border: none;
 }
 
@@ -336,9 +433,8 @@ main {
 .back:hover {
   scale: 1.1;
   color: var(--color-text);
-  background:var(--btn-delete);
+  background: var(--btn-delete);
 }
-
 
 /* Keyframes for moving marquee */
 @keyframes marquee {
