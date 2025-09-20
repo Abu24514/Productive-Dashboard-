@@ -178,10 +178,10 @@ main {
 .todo {
   grid-area: a;
 }
-.daily {
+.moti {
   grid-area: b;
 }
-.moti {
+.daily {
   grid-area: c;
 }
 .pomo {
