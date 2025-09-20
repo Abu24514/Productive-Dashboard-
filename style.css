@@ -10,7 +10,7 @@
 :root {
   --color-bg: #111827; /* Dark background and also Left /right gradient (marquee fade) */
   --color-text: #ffffff; /* Default text color  and toggle-btn */
-  --color-accent: #9bbe41; /* Accent (buttons, highlights) */
+  --color-accent: #a0c14d; /* Accent (buttons, highlights) */
   --color-card-hover: rgba(0, 0, 0, 0.45); /* Card hover shadow */
   --toggle-btn--circle: #37a994; /* also ues in pomo work section */
   --btn-close: #c41b1b;
