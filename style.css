@@ -290,6 +290,236 @@ main {
   font-style: italic;
   padding: 0 0.9rem;
 }
+/* --------------Todo-list-fullPage -------------- */
+.Todo-list-fullPage {
+  display: block;
+  width: 100%;
+}
+.Todo-list-fullPage h2 {
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  display: flex;
+  justify-self: flex-start;
+}
+.Todo-list-fullPage .todo-container {
+  width: 100%;
+  /* height: 50%; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "todo-left"
+    "todo-right";
+  gap: clamp(1rem, 2vw, 2rem);
+
+  margin-top: clamp(2rem, 10vw, 3rem);
+}
+/* add tasks... */
+.Todo-list-fullPage .todo-container .addtask {
+  border-radius: 1rem;
+  background-color: var(--color-accent);
+  grid-area: todo-left;
+}
+.Todo-list-fullPage .todo-container .addtask form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 2rem;
+  gap: 1rem;
+}
+.Todo-list-fullPage .todo-container .addtask form #task-input {
+  padding: 0.8rem;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  width: 100%;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+#task-input::placeholder,
+textarea::placeholder {
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.Todo-list-fullPage .todo-container .addtask form textarea {
+  padding: 0.8rem;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  width: 100%;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+.Todo-list-fullPage .todo-container .addtask form .mark-imp {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.mark-imp #check {
+  width: 1rem;
+  height: 1rem;
+}
+
+.mark-imp label {
+  font-size: clamp(1rem, 5vw, 1.3rem);
+  color: var(--color-bg);
+  font-weight: bold;
+}
+.Todo-list-fullPage .todo-container .addtask form #task-btn {
+  padding: 0.8rem;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: var(--btn-edit);
+  color: var(--color-text);
+  font-weight: bold;
+  outline: none;
+  width: 100%;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+#task-btn::after {
+  content: "";
+  position: absolute;
+  background-color: var(--btn-add);
+  width: 0;
+  height: 0;
+  top: var(--posY);
+  left: var(--posX);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 50%;
+  transition: width 1.5s, height 1.5s;
+}
+/* transition: width 1s, height 1s; */
+#task-btn:hover::after {
+  width: 1000px;
+  height: 500px;
+}
+#task-btn:hover {
+  color: var(--color-text);
+}
+.Todo-list-fullPage .todo-container .addtask form #task-btn:active {
+  scale: 0.97;
+}
+/* all-tasks */
+.Todo-list-fullPage .todo-container .alltasks {
+  border-radius: 1rem 0 0 1rem;
+  grid-area: todo-right;
+  background-color: var(--color-accent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: clamp(1rem, 3vw, 2rem);
+  gap: clamp(0.6rem, 1.5vw, 0.8rem);
+  max-height: clamp(50vh, 60vw, 70vh);
+  overflow-y: auto;
+}
+.alltasks .task {
+  /* background-color: red; */
+  background: var(--color-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.6rem;
+}
+.alltasks .task .checkAndHead {
+  /* background-color: yellow; */
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.task.completed .checkAndHead h5 {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task h5 {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: var(--sec);
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.8rem, 1vw, 1rem);
+  /* flex-wrap: wrap; */
+  /* word-break: break-word; */
+  line-height: 1.4;
+  margin: 0;
+}
+.task h5 span {
+  background-color: var(--btn-close);
+  font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+  border-radius: 15px;
+  padding: clamp(1.8px, 0.5vw, 2.5px) clamp(3px, 1vw, 6px);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.alltasks .task .delAndEditBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(0.6rem, 1vw, 0.8rem);
+}
+
+.deleteBtn,
+.editBtn {
+  width: clamp(1.8rem, 4vw, 2rem);
+  height: clamp(1.8rem, 4vw, 2rem);
+  padding: clamp(0.4rem, 1vw, 0.5rem);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.deleteBtn i {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+}
+
+.editBtn i {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+}
+
+.deleteBtn:hover {
+  background-color: var(--btn-delete);
+  color: var(--color-text);
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.editBtn:hover {
+  background-color: var(--btn-edit);
+  color: var(--color-text);
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.deleteBtn:active,
+.editBtn:active {
+  transform: scale(0.95);
+}
+/* Scrollbar Styling */
+.alltasks::-webkit-scrollbar {
+  width: clamp(6px, 1vw, 8px);
+}
+.alltasks::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.242);
+  border-radius: 5px;
+}
+.alltasks::-webkit-scrollbar-thumb {
+  background: var(--thumb);
+  border-radius: 5px;
+}
 
 /* -------------- Motivational Page-------------- */
 
@@ -488,6 +718,15 @@ main {
   .back {
     padding: 12px 20px;
     top: 30px;
+  }
+
+  .Todo-list-fullPage .todo-container {
+    width: 100%;
+    /* height: 80%; */
+    display: grid;
+    grid-template-columns: 35% auto;
+    grid-template-rows: 1fr;
+    grid-template-areas: "todo-left todo-right";
   }
 }
 

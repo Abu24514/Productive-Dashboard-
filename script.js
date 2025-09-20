@@ -20,3 +20,16 @@ function cardOpenCloseFeatures() {
   });
 }
 cardOpenCloseFeatures();
+
+function rippleEffect() {
+  const taskBtn = document.querySelector("#task-btn");
+
+  taskBtn.addEventListener("mouseover", function (e) {
+    const x = e.pageX - taskBtn.offsetLeft; // pageX - button's left position = X inside button
+    const y = e.pageY - taskBtn.offsetTop; // pageY - button's top position = Y inside button
+
+    taskBtn.style.setProperty("--posX", x + "px");
+    taskBtn.style.setProperty("--posY", y + "px");
+  });
+}
+ rippleEffect();
