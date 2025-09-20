@@ -300,6 +300,7 @@ main {
   display: flex;
   justify-self: flex-start;
 }
+/* Container for add-task + all-tasks */
 .Todo-list-fullPage .todo-container {
   width: 100%;
   /* height: 50%; */
@@ -326,7 +327,8 @@ main {
   padding: 2rem;
   gap: 1rem;
 }
-.Todo-list-fullPage .todo-container .addtask form #task-input {
+/* Task input and textarea field */
+.Todo-list-fullPage .todo-container .addtask form #task-input , textarea {
   padding: 0.8rem;
   border-radius: 0.6rem;
   border: none;
@@ -343,32 +345,43 @@ textarea::placeholder {
   opacity: 0.8;
 }
 
-.Todo-list-fullPage .todo-container .addtask form textarea {
-  padding: 0.8rem;
-  border-radius: 0.6rem;
-  border: none;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  outline: none;
-  width: 100%;
-  font-size: 1.2rem;
-  margin-bottom: 0.3rem;
-}
+/* Mark as important section */
 .Todo-list-fullPage .todo-container .addtask form .mark-imp {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.mark-imp #check {
-  width: 1rem;
-  height: 1rem;
+.mark-imp #impCheck {
+  appearance: none;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  min-width: 20px;
+  height: 20px;
+  border: 3px solid var(--color-bg);
+  border-radius: 50%;
+  transition: all ease 0.3s;
 }
+/* Checked state for important task */
+.mark-imp #impCheck:checked {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1.1);
+
+}
+.mark-imp #impCheck:checked::before {
+  content: "\2713";
+  font-size: 1.5rem;
+   color: var(--color-text);
+} 
 
 .mark-imp label {
   font-size: clamp(1rem, 5vw, 1.3rem);
   color: var(--color-bg);
   font-weight: bold;
 }
+/* Task add button */
 .Todo-list-fullPage .todo-container .addtask form #task-btn {
   padding: 0.8rem;
   border-radius: 0.6rem;
@@ -383,6 +396,7 @@ textarea::placeholder {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
   z-index: 1;
 }
 #task-btn::after {
@@ -398,7 +412,7 @@ textarea::placeholder {
   border-radius: 50%;
   transition: width 1.5s, height 1.5s;
 }
-/* transition: width 1s, height 1s; */
+/* Hover ripple effect */
 #task-btn:hover::after {
   width: 1000px;
   height: 500px;
@@ -409,7 +423,7 @@ textarea::placeholder {
 .Todo-list-fullPage .todo-container .addtask form #task-btn:active {
   scale: 0.97;
 }
-/* all-tasks */
+/* Right side (all tasks container) */
 .Todo-list-fullPage .todo-container .alltasks {
   border-radius: 1rem 0 0 1rem;
   grid-area: todo-right;
@@ -422,6 +436,7 @@ textarea::placeholder {
   max-height: clamp(50vh, 60vw, 70vh);
   overflow-y: auto;
 }
+/* Single task container */
 .alltasks .task {
   /* background-color: red; */
   background: var(--color-bg);
@@ -431,20 +446,48 @@ textarea::placeholder {
   padding: 0.5rem 1rem;
   border-radius: 0.6rem;
 }
+/* Task left side: checkbox + text */
 .alltasks .task .checkAndHead {
-  /* background-color: yellow; */
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 1rem;
 }
+.alltasks .task .checkAndHead .check {
+  appearance: none;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  min-width: 20px;
+  height: 20px;
+  border: 3px solid var(--color-accent);
+  border-radius: 50%;
+    transition: all ease 0.3s;
+}
+/* Checked state for task checkbox */
+.alltasks .task .checkAndHead .check:checked {
+  border: 3px solid var(--btn-edit);
+  transform: scale(1.1);
+  transition: all ease 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alltasks .task .checkAndHead .check:checked::before {
+  content: "\2713";
+  color: var(--pomo-card);
+  font-size: 1.5rem;
+}
+/* Completed task text styling */
 .task.completed .checkAndHead h5 {
-  text-decoration: line-through;
+  text-decoration: 2px line-through #000;
+  color:var(--btn-close);
   opacity: 0.6;
 }
 
+/* Task title */
 .task h5 {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
-  color: var(--sec);
+  color: var(--color-text);
   display: flex;
   align-items: flex-start;
   gap: clamp(0.8rem, 1vw, 1rem);
@@ -453,6 +496,7 @@ textarea::placeholder {
   line-height: 1.4;
   margin: 0;
 }
+/* Priority tag inside task */
 .task h5 span {
   background-color: var(--btn-close);
   font-size: clamp(0.5rem, 1.5vw, 0.7rem);
@@ -461,6 +505,7 @@ textarea::placeholder {
   white-space: nowrap;
   flex-shrink: 0;
 }
+/* Task right side: delete/edit buttons */
 .alltasks .task .delAndEditBtn {
   display: flex;
   justify-content: space-between;
@@ -483,25 +528,18 @@ textarea::placeholder {
   transition: all 0.3s ease;
 }
 
-.deleteBtn i {
+.deleteBtn i , .editBtn i {
   font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
-
-.editBtn i {
-  font-size: clamp(0.8rem, 2vw, 0.9rem);
-}
-
 .deleteBtn:hover {
   background-color: var(--btn-delete);
   color: var(--color-text);
   transform: scale(1.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .editBtn:hover {
   background-color: var(--btn-edit);
   color: var(--color-text);
   transform: scale(1.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .deleteBtn:active,
@@ -534,6 +572,7 @@ textarea::placeholder {
   justify-content: center;
   padding: 0.6rem 0.8rem;
 }
+/* Motivation card styles */
 .motivation-card {
   background: var(--mt-card);
   color: var(--text-input1);
@@ -551,11 +590,12 @@ textarea::placeholder {
   transform: translateY(-2px);
   box-shadow: 0 2px 30px var(--text-input1);
 }
-
+/* Quote header row */
 .mt-top {
   display: flex;
   justify-content: space-between;
 }
+/* Quote tag styles */
 .quote-tag {
   background: #041632e4;
   color: var(--color-text);
@@ -570,6 +610,7 @@ textarea::placeholder {
   object-fit: cover;
   opacity: 0.4;
 }
+/* Quote text */
 .motivation-card p {
   font-style: italic;
   font-weight: 400;
@@ -630,6 +671,7 @@ textarea::placeholder {
   z-index: 3;
 }
 
+/* Back button in full view */
 .back {
   position: absolute;
   top: 32px;
@@ -641,6 +683,7 @@ textarea::placeholder {
   font-size: clamp(0.3rem, 2.5vw, 1rem);
   font-weight: 600;
   text-transform: capitalize;
+  cursor: pointer;
   overflow: hidden;
   transition: background-color 0.3s ease, color 0.3s ease, scale 0.3s ease;
   border: none;
@@ -678,8 +721,8 @@ textarea::placeholder {
 
 /* ================= RESPONSIVE DESIGN ================= */
 
-/* Tablet/Desktop view */
 @media (min-width: 680px) {
+  /* Tablet/Desktop layout adjustments */
   .dates-wheather {
     grid-template-columns: 45% 53%; /* 2 columns */
     align-items: stretch;
