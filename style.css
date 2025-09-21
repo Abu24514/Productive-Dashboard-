@@ -12,7 +12,7 @@
   --color-text: #ffffff; /* Default text color  and toggle-btn */
   --color-accent: #a0c14d; /* Accent (buttons, highlights) */
   --color-card-hover: rgba(0, 0, 0, 0.45); /* Card hover shadow */
-  --toggle-btn--circle: #37a994; /* also ues in pomo work section */
+  --toggle-btn--circle: #0acf83; /* also ues in pomo work section */
   --btn-close: #c41b1b;
   --btn-add: #ff7262;
   --btn-delete: #f74444;
@@ -22,7 +22,7 @@
   --text-input2: #393b35;
   --mt-card: #f0d853;
   --mt-q-auth: #171718;
-  --pomo-card: #fbfbfb; /* 17% opacity;
+  --pomo-card: #fbfbfb66; /* 17% opacity;
   */
 }
 
@@ -290,9 +290,60 @@ main {
   font-style: italic;
   padding: 0 0.9rem;
 }
+
+/* ================= FULL ELEMS EACH SECTIONS ================= */
+.fullElems {
+  background-color: var(--color-bg);
+  width: 100%;
+  height: 1000px; /* only initial height after remove */
+  padding: clamp(10px, 10vw, 40px);
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+/* Back button in full view */
+.back {
+  position: absolute;
+  top: 32px;
+  right: 30px;
+  padding: 8px 12px;
+  border-radius: 700px;
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+  font-size: clamp(0.3rem, 2.5vw, 1rem);
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease, scale 0.3s ease;
+  border: none;
+}
+
+.back::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.448);
+  transform: skewX(-20deg);
+  transition: all 0.5s ease;
+}
+.back:hover::after {
+  left: 200%;
+}
+.back:hover {
+  scale: 1.1;
+  color: var(--color-text);
+  background: var(--btn-delete);
+}
+
 /* --------------Todo-list-fullPage -------------- */
 .Todo-list-fullPage {
-  display: block;
+  /* display: block; */
   width: 100%;
 }
 .Todo-list-fullPage h2 {
@@ -328,7 +379,8 @@ main {
   gap: 1rem;
 }
 /* Task input and textarea field */
-.Todo-list-fullPage .todo-container .addtask form #task-input , textarea {
+.Todo-list-fullPage .todo-container .addtask form #task-input,
+textarea {
   padding: 0.8rem;
   border-radius: 0.6rem;
   border: none;
@@ -368,13 +420,12 @@ textarea::placeholder {
   justify-content: center;
   align-items: center;
   transform: scale(1.1);
-
 }
 .mark-imp #impCheck:checked::before {
   content: "\2713";
   font-size: 1.5rem;
-   color: var(--color-text);
-} 
+  color: var(--color-text);
+}
 
 .mark-imp label {
   font-size: clamp(1rem, 5vw, 1.3rem);
@@ -461,7 +512,7 @@ textarea::placeholder {
   height: 20px;
   border: 3px solid var(--color-accent);
   border-radius: 50%;
-    transition: all ease 0.3s;
+  transition: all ease 0.3s;
 }
 /* Checked state for task checkbox */
 .alltasks .task .checkAndHead .check:checked {
@@ -474,13 +525,13 @@ textarea::placeholder {
 }
 .alltasks .task .checkAndHead .check:checked::before {
   content: "\2713";
-  color: var(--pomo-card);
+  color: var(--color-text);
   font-size: 1.5rem;
 }
 /* Completed task text styling */
 .task.completed .checkAndHead h5 {
   text-decoration: 2px line-through #000;
-  color:var(--btn-close);
+  color: var(--btn-close);
   opacity: 0.6;
 }
 
@@ -528,7 +579,8 @@ textarea::placeholder {
   transition: all 0.3s ease;
 }
 
-.deleteBtn i , .editBtn i {
+.deleteBtn i,
+.editBtn i {
   font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 .deleteBtn:hover {
@@ -562,7 +614,8 @@ textarea::placeholder {
 /* -------------- Motivational Page-------------- */
 
 .motivation-fullPage {
-  display: block;
+  /* display: block; */
+  background-color: var(--color-bg);
 }
 
 .motivational-container {
@@ -659,54 +712,86 @@ textarea::placeholder {
   font-family: monospace;
 }
 
-/* ================= FULL ELEMS EACH SECTIONS ================= */
-.fullElems {
-  background-color: var(--color-bg);
+/* --------------  Pomodore Page-------------- */
+.pomodore-fullPage {
+  display: block;
   width: 100%;
-  height: 1000px; /* only initial height after remove */
-  padding: clamp(10px, 10vw, 40px);
-  display: none;
-  position: absolute;
-  inset: 0;
-  z-index: 3;
 }
-
-/* Back button in full view */
-.back {
-  position: absolute;
-  top: 32px;
-  right: 30px;
-  padding: 8px 12px;
-  border-radius: 700px;
-  color: var(--color-bg);
-  background-color: var(--color-accent);
-  font-size: clamp(0.3rem, 2.5vw, 1rem);
-  font-weight: 600;
+.pomodore-fullPage h2 {
   text-transform: capitalize;
-  cursor: pointer;
-  overflow: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease, scale 0.3s ease;
-  border: none;
+  font-size: clamp(1rem, 6vw, 2.4rem);
 }
-
-.back::after {
+.pomodore-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.pomo-timer {
+  padding: clamp(1rem, 5vw, 2rem);
+  margin-top: 4rem;
+  width: clamp(70vw, 3vw, 15vw);
+  height: clamp(450px, 10vw, 88vw);
+  background-color: var(--pomo-card);
+  border-radius: 1rem;
+}
+.pomo-timer h3 {
+  margin-top: 0.6rem;
+  display: flex;
+  justify-self: center;
+  font-size: clamp(1rem, 5vw, 3rem);
+  background-color: var(--toggle-btn--circle);
+  border-radius: 0.5rem;
+  text-align: center;
+  padding: 0.8rem 1.3rem;
+  color: var(--text-input2);
+  font-weight: bold;
+  width: 80%;
+  text-align: center;
+}
+.pomo-timer p {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  font-size: clamp(4rem, 7vw, 10rem);
+  margin-top: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: bolder;
+}
+.pomo-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: clamp(3vw, 8vw, 3.2vw);
+}
+.pomo-c-btn {
+  text-transform: uppercase;
+  background-color: var(--pomo-card);
+  color: var(--color-text);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  position: relative;
+  overflow: hidden;
+}
+.pomo-c-btn::after {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
+  height: 0%;
+  border-radius: 0.5rem;
+  background-color: var(--plan-input);
+  z-index: -1;
+  transition: all linear 0.5s;
+}
+.pomo-c-btn:hover::after {
   height: 100%;
-  background: rgba(255, 255, 255, 0.448);
-  transform: skewX(-20deg);
-  transition: all 0.5s ease;
 }
-.back:hover::after {
-  left: 200%;
-}
-.back:hover {
-  scale: 1.1;
-  color: var(--color-text);
-  background: var(--btn-delete);
+.pomo-c-btn:hover {
+  color: var(--color-bg);
 }
 
 /* Keyframes for moving marquee */
@@ -770,6 +855,31 @@ textarea::placeholder {
     grid-template-columns: 35% auto;
     grid-template-rows: 1fr;
     grid-template-areas: "todo-left todo-right";
+  }
+
+  .pomo-timer h3 {
+    border-radius: 0.8rem;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    color: var(--text-input2);
+    font-weight: bold;
+    width: fit-content;
+  }
+
+  .pomo-control {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  .pomo-c-btn {
+    text-transform: uppercase;
+    background-color: var(--pomo-card);
+    color: var(--color-text);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
   }
 }
 
