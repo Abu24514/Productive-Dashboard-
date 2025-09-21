@@ -783,15 +783,26 @@ textarea::placeholder {
   width: 100%;
   height: 0%;
   border-radius: 0.5rem;
-  background-color: var(--plan-input);
   z-index: -1;
   transition: all linear 0.5s;
+}
+#start-timer::after{
+  background-color: var(--color-accent);
+}
+#pause-timer::after{
+  background-color: var(--btn-add);
+}
+#reset-timer::after{
+  background-color: var(--btn-edit);
 }
 .pomo-c-btn:hover::after {
   height: 100%;
 }
 .pomo-c-btn:hover {
   color: var(--color-bg);
+}
+.pomo-c-btn:active{
+  scale: 0.95;
 }
 
 /* Keyframes for moving marquee */
