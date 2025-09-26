@@ -1,3 +1,4 @@
+// Card open and close
 function cardOpenCloseFeatures() {
   // element selector
 
@@ -21,6 +22,7 @@ function cardOpenCloseFeatures() {
 }
 cardOpenCloseFeatures();
 
+// ripple effect 
 function rippleEffect() {
   const taskBtn = document.querySelector("#task-btn");
 
@@ -34,6 +36,7 @@ function rippleEffect() {
 }
 rippleEffect();
 
+// pomodore Timer
 function pomodoreTimer() {
   let time = document.querySelector(".pomo-timer p");
   let startBtn = document.querySelector("#start-timer");
