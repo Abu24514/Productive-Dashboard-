@@ -142,7 +142,7 @@ main {
 }
 
 /* Dates + Weather container */
-.dates-wheather {
+.dates-weather {
   display: grid;
   grid-template-columns: 1fr; /* Mobile = single column */
   gap: 1rem;
@@ -153,7 +153,7 @@ main {
 
 /* Child boxes */
 .dates,
-.wheather {
+.weather {
   border-radius: 1rem;
   padding: 1rem;
   transition: all 0.3s ease;
@@ -161,7 +161,7 @@ main {
 
 /* Hover effect */
 .dates:hover,
-.wheather:hover {
+.weather:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 40px var(--color-card-hover);
 }
@@ -170,7 +170,7 @@ main {
 .dates {
   background: url("assets/datesAndTime.webp") no-repeat center center/cover;
 }
-.wheather {
+.weather {
   background: url("assets/skull-1.webp") no-repeat center center/cover;
 }
 
@@ -872,7 +872,7 @@ textarea::placeholder {
 
 /* Tablet (min-width: 600px) */
 @media (min-width: 680px) {
-  .dates-wheather {
+  .dates-weather {
     grid-template-columns: 45% 53%; /* 2 columns */
     align-items: stretch;
   }
