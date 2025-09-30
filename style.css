@@ -137,7 +137,8 @@ input:checked + .toggleBtn::before {
 
 /* ================= MAIN SECTION ================= */
 main {
-  min-height: calc(100vh - 4rem); /* Full height minus navbar */
+  min-height: calc(100vh - 4rem); /* Full height minus 
+  navbar */
 }
 
 /* Dates + Weather container */
@@ -180,12 +181,14 @@ main {
   width: 100%;
   display: grid;
   place-content: center;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto;
   grid-template-areas:
-    "a b"
-    "c d";
-  gap: 2.5rem;
+    "a "
+    "b"
+    "c "
+    "d";
+  gap: 2rem;
   border-radius: 1rem;
 }
 
@@ -214,8 +217,8 @@ main {
   align-items: center;
   overflow: hidden;
   transition: all ease 0.3s;
-  width: clamp(10rem, 18vw, 30rem);
-  height: clamp(12rem, 19vw, 28rem);
+  width: clamp(19rem, 12vw, 25rem);
+  height: clamp(22rem, 14vw, 25rem);
   position: relative;
 }
 
@@ -306,23 +309,23 @@ main {
   font-style: italic;
   padding: 0 0.9rem;
 }
-.view-2 .marquee .text .t-p{
--webkit-text-stroke: 0.9px var(--color-accent);
- color: transparent;
+.view-2 .marquee .text .t-p {
+  -webkit-text-stroke: 0.9px var(--color-accent);
+  color: transparent;
   font-weight: 200;
-  font-style:normal;
+  font-style: normal;
 }
 
 /* ================= FULL ELEMS EACH SECTIONS ================= */
 .fullElems {
   background-color: var(--color-bg);
   width: 100%;
-  height: 1000px; /* only initial height after remove */
+  height: 100vh;
   padding: clamp(10px, 10vw, 40px);
   display: none;
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 3;
+  z-index: 999;
 }
 
 /* Back button in full view */
@@ -335,7 +338,7 @@ main {
   color: var(--color-bg);
   background-color: var(--color-accent);
   font-size: clamp(0.3rem, 2.5vw, 1rem);
-  font-family: 'Gilroy', sans-serif;
+  font-family: "Gilroy", sans-serif;
   font-weight: 600;
   text-transform: capitalize;
   cursor: pointer;
@@ -371,7 +374,7 @@ main {
 }
 .Todo-list-fullPage h2 {
   font-size: clamp(1.3rem, 4vw, 2rem);
-  font-family: 'Gilroy', sans-serif;
+  font-family: "Gilroy", sans-serif;
   font-weight: 700;
   display: flex;
   justify-self: flex-start;
@@ -381,7 +384,7 @@ main {
   width: 100%;
   /* height: 50%; */
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto;
   grid-template-rows: auto auto;
   grid-template-areas:
     "todo-left"
@@ -401,11 +404,10 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   padding: 2rem;
-  gap: 1rem;
+  gap:clamp(0.3rem ,3vw , 1rem) ;
 }
 /* Task input and textarea field */
-.Todo-list-fullPage .todo-container .addtask form #task-input,
-textarea {
+.Todo-list-fullPage .todo-container .addtask form #task-input {
   padding: 0.8rem;
   border-radius: 0.6rem;
   border: none;
@@ -413,10 +415,24 @@ textarea {
   color: var(--color-text);
   outline: none;
   width: 100%;
-  font-size:clamp(1rem , 3vw , 1.2rem);
-  font-family: 'Inter', sans-serif;
-  margin-bottom: 0.3rem;
+   font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+  font-family: "Inter", sans-serif;
+  
 }
+textarea {
+  height: 100px;
+  padding: 0.8rem;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  width: 100%;
+  font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+  font-family: "Inter", sans-serif;
+
+}
+
 #task-input::placeholder,
 textarea::placeholder {
   color: var(--color-text);
@@ -435,7 +451,7 @@ textarea::placeholder {
   display: flex;
   align-self: center;
   min-width: 20px;
-  height: 20px;
+  height:clamp(3px , 4vw, 20px);
   border: 3px solid var(--color-bg);
   border-radius: 50%;
   transition: all ease 0.3s;
@@ -449,28 +465,28 @@ textarea::placeholder {
 }
 .mark-imp #impCheck:checked::before {
   content: "\2713";
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--color-text);
 }
 
 .mark-imp label {
-  font-size: clamp(1rem, 5vw, 1.3rem);
+  font-size: clamp(0.1rem, 4vw, 1.3rem);
   color: var(--color-bg);
-  font-family: 'Gilroy', sans-serif;
+  font-family: "Gilroy", sans-serif;
   font-weight: 600;
 }
 /* Task add button */
 .Todo-list-fullPage .todo-container .addtask form #task-btn {
-  padding: 0.8rem;
-  border-radius: 0.6rem;
+  padding:clamp(0.2rem , 2vw, 0.8rem);
+  border-radius: clamp(0.2rem , 2vw, 0.6rem);
   border: none;
   background-color: var(--btn-edit);
   color: var(--color-text);
   font-weight: bold;
   outline: none;
   width: 100%;
-  font-size: 1.2rem;
-  font-family: 'Gilroy', sans-serif;
+  font-size: clamp(0.656rem, 3.5vw, 1.2rem);
+  font-family: "Gilroy", sans-serif;
   font-weight: 600;
   margin-bottom: 0.3rem;
   transition: all 0.3s ease;
@@ -566,8 +582,8 @@ textarea::placeholder {
 
 /* Task title */
 .task h5 {
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.656rem, 2vw, 1.5rem);
+  font-family: "Inter", sans-serif;
   font-weight: 500;
   color: var(--color-text);
   display: flex;
@@ -582,7 +598,7 @@ textarea::placeholder {
 .task h5 span {
   background-color: var(--btn-close);
   font-size: clamp(0.5rem, 1.5vw, 0.7rem);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   border-radius: 15px;
   padding: clamp(1.8px, 0.5vw, 2.5px) clamp(3px, 1vw, 6px);
   white-space: nowrap;
@@ -639,7 +655,7 @@ textarea::placeholder {
   border-radius: 5px;
 }
 .alltasks::-webkit-scrollbar-thumb {
-  background: var(--thumb);
+  background: var(--btn-edit);
   border-radius: 5px;
 }
 
@@ -663,7 +679,7 @@ textarea::placeholder {
   color: var(--text-input1);
   border-radius: 1rem;
   padding: 1.5rem;
-  width: clamp(30vw, 90vw, 60vw);
+  width: clamp(55vw, 98vw, 70vw);
   display: flex;
   flex-direction: column;
   column-gap: 3.5vw;
@@ -682,12 +698,12 @@ textarea::placeholder {
 }
 /* Quote tag styles */
 .quote-tag {
-  background:var(--text-input1);
+  background: var(--text-input1);
   color: var(--color-text);
   padding: clamp(0.5rem, 5vw, 0.8rem) clamp(0.6rem, 8vw, 0.8rem);
   border-radius: 0.5rem;
   font-size: clamp(0.2rem, 2.5vw, 1rem);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 500;
   letter-spacing: 1px;
 }
@@ -702,8 +718,8 @@ textarea::placeholder {
   font-style: italic;
   font-weight: 400;
   text-align: center;
-  font-size: clamp(0.2rem, 5vw, 1.5rem);
-  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.3rem, 4vw, 1.5rem);
+  font-family: "Inter", sans-serif;
   font-weight: 200;
   min-height: 50px;
   color: var(--text-input2);
@@ -743,21 +759,20 @@ textarea::placeholder {
   text-align: center;
   font-size: clamp(0.4rem, 5vw, 1.5rem);
   letter-spacing: 0.5px;
-  color:var(--color-bg);
-  font-family: 'Gilroy', sans-serif;
+  color: var(--color-bg);
+  font-family: "Gilroy", sans-serif;
   font-weight: 600;
-  
 }
 
 /* --------------  Pomodore Page-------------- */
 .pomodore-fullPage {
-  display: block;
+  /* display: block; */
   width: 100%;
 }
 .pomodore-fullPage h2 {
   text-transform: capitalize;
   font-size: clamp(1rem, 6vw, 2.4rem);
-  font-family: 'Gilroy', sans-serif;
+  font-family: "Gilroy", sans-serif;
   font-weight: 700;
 }
 .pomodore-container {
@@ -769,7 +784,6 @@ textarea::placeholder {
   padding: clamp(1rem, 5vw, 2rem);
   margin-top: 4rem;
   width: clamp(70vw, 3vw, 15vw);
-  height: clamp(450px, 10vw, 88vw);
   background-color: var(--pomo-card);
   border-radius: 1rem;
 }
@@ -783,15 +797,14 @@ textarea::placeholder {
   text-align: center;
   padding: 0.8rem 1.3rem;
   color: var(--text-input2);
-  font-family: 'Inter', sans-serif;
-
+  font-family: "Inter", sans-serif;
 }
 .pomo-timer p {
   display: flex;
   justify-self: center;
   align-self: center;
-  font-size: clamp(4rem, 7vw, 10rem);
-  margin-top: clamp(1.8rem, 5vw, 2.5rem);
+  font-size: clamp(3.2rem, 7vw, 10rem);
+  margin-top: clamp(1.6rem, 5vw, 2.5rem);
   font-weight: bolder;
   font-family: "JetBrains Mono", monospace;
 }
@@ -810,8 +823,8 @@ textarea::placeholder {
   border: none;
   padding: 1rem 2rem;
   border-radius: 0.5rem;
-  font-size: clamp(1.3rem, 4vw, 1.8rem);
-  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-family: "Inter", sans-serif;
   position: relative;
   overflow: hidden;
 }
@@ -857,8 +870,8 @@ textarea::placeholder {
 
 /* ================= RESPONSIVE DESIGN ================= */
 
+/* Tablet (min-width: 600px) */
 @media (min-width: 680px) {
-  /* Tablet/Desktop layout adjustments */
   .dates-wheather {
     grid-template-columns: 45% 53%; /* 2 columns */
     align-items: stretch;
@@ -885,10 +898,21 @@ textarea::placeholder {
   }
 
   .allElems {
-    grid-template-rows: auto;
-    grid-template-columns: auto auto auto auto;
-    grid-template-areas: "a b c d";
+    place-content: center;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "a b"
+      "c d";
     gap: 2rem;
+  }
+
+  .todo,
+  .daily,
+  .moti,
+  .pomo {
+    width: clamp(20rem, 18vw, 30rem);
+    height: clamp(22rem, 19vw, 28rem);
   }
 
   .fullElems {
@@ -899,13 +923,8 @@ textarea::placeholder {
     top: 30px;
   }
 
-  .Todo-list-fullPage .todo-container {
-    width: 100%;
-    /* height: 80%; */
-    display: grid;
-    grid-template-columns: 35% auto;
-    grid-template-rows: 1fr;
-    grid-template-areas: "todo-left todo-right";
+  textarea {
+    height: auto;
   }
 
   .pomo-timer h3 {
@@ -934,13 +953,50 @@ textarea::placeholder {
   }
 }
 
-/* Mobile view */
-@media (max-width: 599px) {
-  main {
-    overflow-y: auto;
+/* Laptop (min-width: 992px) */
+@media (min-width: 992px) {
+  .allElems {
+    grid-template-rows: auto;
+    grid-template-columns: auto auto auto auto;
+    grid-template-areas: "a b c d";
+    gap: 1rem;
   }
-  .elem h2 {
-    bottom: 4px;
-    right: 8px;
+
+  /* Card common styles */
+  .todo,
+  .daily,
+  .moti,
+  .pomo {
+    border-radius: 1rem;
+    width: clamp(14rem, 13vw, 35rem);
+    height: clamp(20rem, 18vw, 38rem);
+  }
+
+  .Todo-list-fullPage .todo-container {
+    width: 100%;
+    /* height: 80%; */
+    display: grid;
+    grid-template-columns: 35% auto;
+    grid-template-rows: 1fr;
+    grid-template-areas: "todo-left todo-right";
+  }
+}
+
+/* Desktop / Large screens (min-width: 1150px) */
+@media (min-width: 1150px) {
+  .allElems {
+    grid-template-rows: auto;
+    grid-template-columns: auto auto auto auto;
+    grid-template-areas: "a b c d";
+    gap: 1.5rem;
+  }
+  /* Card common styles */
+  .todo,
+  .daily,
+  .moti,
+  .pomo {
+    border-radius: 1rem;
+    width: clamp(16rem, 13vw, 35rem);
+    height: clamp(18.3rem, 14vw, 28rem);
   }
 }

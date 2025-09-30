@@ -72,7 +72,7 @@ function pomodoreTimer() {
           session.style.color = "var( --pomo-card)";
           totalSeconds = 5 * 60;
         }
-      }, 10);
+      }, 1000);
     } else {
       timerInterval = setInterval(() => {
         if (totalSeconds > 0) {
@@ -87,7 +87,7 @@ function pomodoreTimer() {
           session.style.color = "var( --text-input2)";
           totalSeconds = 25 * 60;
         }
-      }, 10);
+      }, 1000);
     }
   };
 
