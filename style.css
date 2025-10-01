@@ -148,7 +148,7 @@ main {
   gap: 1rem;
   padding: 0.8rem;
   border-radius: 1rem;
-  height: 250px;
+  height: 550px;
 }
 
 /* Child boxes */
@@ -171,7 +171,7 @@ main {
   background: url("assets/datesAndTime.webp") no-repeat center center/cover;
 }
 .weather {
-  background: url("assets/skull-1.webp") no-repeat center center/cover;
+  background: url("assets/clouds.webp") no-repeat center center/cover;
 }
 
 /* ================= FEATURE CARDS ================= */
@@ -872,10 +872,7 @@ textarea::placeholder {
 
 /* Tablet (min-width: 600px) */
 @media (min-width: 680px) {
-  .dates-weather {
-    grid-template-columns: 45% 53%; /* 2 columns */
-    align-items: stretch;
-  }
+
 
   .view-2 {
     padding: 0.8rem 0;
@@ -955,6 +952,11 @@ textarea::placeholder {
 
 /* Laptop (min-width: 992px) */
 @media (min-width: 992px) {
+  .dates-weather {
+    grid-template-columns: 45% 53%; /* 2 columns */
+     align-items: stretch;
+     height: 250px;
+  } 
   .allElems {
     grid-template-rows: auto;
     grid-template-columns: auto auto auto auto;
@@ -984,6 +986,11 @@ textarea::placeholder {
 
 /* Desktop / Large screens (min-width: 1150px) */
 @media (min-width: 1150px) {
+    .dates-weather {
+    grid-template-columns: 45% 53%; /* 2 columns */
+     align-items: stretch;
+     height: 250px;
+  } 
   .allElems {
     grid-template-rows: auto;
     grid-template-columns: auto auto auto auto;
