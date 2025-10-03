@@ -15,6 +15,9 @@
 
     <!-- ==== +++ External CSS file  +++ ====-->
     <link rel="stylesheet" href="style.css" />
+     
+    <!-- <link rel="stylesheet" href="char.css"> -->
+     
   </head>
   <body>
     <!-- =================== NAVBAR =================== -->
@@ -25,23 +28,66 @@
         <p>Productive Dashboard</p>
       </div>
       <!-- Theme toggle button (light/dark mode) -->
-      <div class="change">
+      <!-- <div class="change">
         <input type="checkbox" id="checkbox" />
         <label for="checkbox" class="toggleBtn"></label>
-      </div>
+      </div> -->
     </nav>
 
     <!-- =================== MAIN CONTENT =================== -->
     <main>
       <!-- Section: Date and Weather Display -->
-      <section class="dates-weather">
-        <div class="dates">Dates/time</div>
-      <!-- weather applications  -->
-        <div class="weather">
-          weather application 🌡️
-        </div>
-      </section>
+       <section class="view-1">
+        <div class="date  uper"></div>
+        <div class="weather uper">
+           <div class="weather-container">
+            <div class="name">
+                <span>London</span>
+                <img src="https://flagsapi.com/GB/shiny/32.png" alt="country">
+              </div>
+            <!--  search city name  -->
+            <form class="citySearch">
+              <input type="text" class="cityname" placeholder="City name........">
+              <button class="s-btn">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+           </div>
+             <!-- weather-box -->
+             <div class="weather-box">
+              <div class="weather-left-box box-below">
+                <div class="icon w-l-b">
+                  <img src="https://openweathermap.org/img/wn/10d@4x.png" />
+                </div>
+                <div class="tempAnddesc w-l-b">
+                  <span class="temp">30°C</span>
+                  <p class="desc">overcast clouds</p>
+                </div>
+              </div>
+               <div class="weather-right-box box-below">
+                     <div class="cloud  w-r-b">
+                  <span>clouds</span>
+                  <i class="fa-solid fa-cloud"></i>
+                 <span id="cloud-pr">98%</span>
+              </div>
+              <div class="humidity w-r-b ">
+                    <span>humidity</span>
+                    <i class="fa-solid fa-droplet"></i>
+                    <span id="humidity-pr">98%</span>
+              </div>
+              <div class="wind  w-r-b">
+                  <span>pressure</span>
+                  <i class="fa-solid fa-gauge"></i>
+                 <span id="pressure">1011 hPa</span>
+              </div>
 
+               </div>
+             </div>
+              </div>
+
+             
+        </div>
+       </section>
       <!-- Section: Marquee Scrolling Text (features preview) -->
       <section class="view-2">
         <div class="marquee">
