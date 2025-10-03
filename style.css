@@ -22,8 +22,10 @@
   --text-input2: #393b35;
   --mt-card: #f0d853;
   --mt-q-auth: #171718;
-  --pomo-card: #fbfbfb66; /* 17% opacity;
+  --pomo-card: #fbfbfb66; /* 17% 
+  opacity;
   */
+  --time-bg:rgba(0, 0, 0, 0.49);
 }
 
 /* font-family: 'Gilroy', sans-serif; */
@@ -156,7 +158,66 @@ main {
 .date{
   grid-area: ab;
   background: url("assets/cats.webp") no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
 }
+.time{
+    display: flex;
+    justify-self: flex-start;
+    font-size: 1.2rem;
+    font-weight: 700;
+    /* color: var(--color-text); */
+    color: var(--mt-q-auth);
+    padding: 0.4rem 1.2rem;
+    background-image: linear-gradient(
+          to bottom,
+            var(--color-text) 90%,
+             var(--mt-q-auth) 10%
+            
+    );
+    border-radius: 0.5rem;
+    width:clamp(50%, 18vw, 70%);
+}
+.DateYear{
+      background-image: linear-gradient(
+          to bottom,
+            var(--time-bg) 90%,
+             var(--pomo-card) 10%
+            
+    );
+  padding: 0.8rem 1.5rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content:space-between;
+  margin-top: 0.5rem;
+}
+.Date , .year{
+  font-size:clamp(1.2rem , 5vw , 1.8rem) ;
+  font-weight: 600;
+}
+
+.week{
+
+          background-image: linear-gradient(
+          to bottom,
+            var(--time-bg) 90%,
+             var(--pomo-card) 10%
+            
+    );
+    padding: 0.8rem 1.5rem;
+    border-radius: 1rem;
+    margin-top: 0.5rem;
+    font-size:clamp(1.2rem , 5vw , 1.8rem) ;
+    font-weight: 600;
+}
+.week{
+ width: fit-content;
+ display: flex;
+ align-self: flex-end;
+}
+
 .weather{
   grid-area: bc;
   background: url("assets/clouds.webp") no-repeat center center/cover;
@@ -1026,6 +1087,12 @@ textarea::placeholder {
 
 /* Tablet (min-width: 600px) */
 @media (min-width: 680px) {
+
+  .time{
+    font-size: 1.8rem;
+    padding: 0.4rem 1.5rem;
+    width:clamp(38%, 18vw, 40%);
+}
   .uper{
    width: clamp(40rem, 14vw, 50rem);
    height: clamp(16rem, 10vw, 20rem);
@@ -1148,6 +1215,14 @@ width: 24rem;
     "ab bc";
     gap: 0.8rem;
 }
+.date{
+  gap: 0.4rem;
+}
+  .time{
+    font-size: 1.8rem;
+    padding: 0.4rem 1.5rem;
+    width:clamp(50%, 18vw, 56%);
+}
   .uper{
    width: clamp(30rem, 12vw, 50rem);
    height: clamp(14rem, 10vw, 20rem);
@@ -1201,6 +1276,11 @@ width: 24rem;
   .uper{
    width: clamp(35rem, 20vw, 60rem);
    height: clamp(14rem, 10vw, 20rem);
+}
+  .time{
+    font-size: 1.8rem;
+    padding: 0.4rem 1.5rem;
+    width:clamp(38%, 18vw, 43%);
 }
   /* Card common styles */
   .todo,
