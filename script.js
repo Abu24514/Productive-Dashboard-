@@ -1,3 +1,42 @@
+// Call every second
+setInterval(timeDate, 1000);
+// Dates and Time
+function timeDate() {
+  // Select DOM elements
+  let Time = document.querySelector(".date .time");
+  let week = document.querySelector(".date .week");
+  let year = document.querySelector(".date .year");
+  let tarikDiv = document.querySelector(".date .Date");
+
+  const totalDaysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  // Get current date and time
+  let date = new Date();
+  let dayOfWeek = totalDaysOfWeek[date.getDay()];
+  let saal = date.getFullYear();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  let tarik = date.getDate();
+  let month = monthNames[date.getMonth()];
+
+  // Update text
+  week.textContent = dayOfWeek;
+  year.textContent = saal;
+  tarikDiv.textContent = `${tarik} ${month}`;
+
+  // Format hours for 12-hour clock
+  let meridian = hours >= 12 ? "PM" : "AM";
+  let formattedHours = hours % 12 || 12; // 0 ko 12 me convert karega
+
+  // Update time display
+  Time.textContent = 
+    `${String(formattedHours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${meridian}`;
+}
 // Card open and close
 function cardOpenCloseFeatures() {
   // element selector
