@@ -37,6 +37,73 @@ function timeDate() {
   Time.textContent = 
     `${String(formattedHours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${meridian}`;
 }
+// Weather application
+function weatherApp(){
+    //  all selector
+let city = document.querySelector(".name");
+let form = document.querySelector(".citySearch");
+let tempAndDesc = document.querySelector(".tempAnddesc");
+let valueSearch = document.querySelector(".cityname");
+let ImgIcon = document.querySelector(".icon");
+let weather = document.querySelector(".weather");
+let weatherBox = document.querySelector(".weather-box");
+
+weatherBox.style.display = "none";
+city.style.display = "none";
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const cityValueName = valueSearch.value;
+  if (cityValueName !== "") {
+    weatherApiCall(cityValueName);
+  }
+});
+
+const apiKey = "fffad2b006a3bbc946750dc15058d48d";
+async function weatherApiCall(cityValueName) {
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityValueName}&appid=${apiKey}&units=metric`
+    );
+    let data = await response.json();
+    if (data.cod == 200) {
+      const temprature = Math.floor(data.main.temp);
+      const description = data.weather[0].description;
+      city.querySelector(".w-n").textContent = data.name;
+      city.querySelector("img").src =
+        "https://flagsapi.com/" + data.sys.country + "/shiny/32.png";
+      ImgIcon.querySelector(
+        "img"
+      ).src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+      tempAndDesc.querySelector(".temp").textContent = `${temprature}°C`;
+      tempAndDesc.querySelector(".desc").textContent = `${description}`;
+      const info = {
+        "cloud-pr": `${data.clouds.all}%`,
+        "humidity-pr": `${data.main.humidity}%`,
+        pressure: `${data.main.pressure} hPa`,
+      };
+      let convertToArr = Object.entries(info);
+      convertToArr.forEach(([id, value]) => {
+        // console.log(id ,value);
+        document.getElementById(id).textContent = value;
+      });
+      weatherBox.style.display = "flex";
+      city.style.display = "flex";
+    } else {
+      weather.classList.add("error");
+      setTimeout(() => {
+        weather.classList.remove("error");
+      }, 1000);
+    }
+  } catch (err) {
+    console.error("Error fetching weather:", err);
+    weatherBox.style.display = "none";
+    city.style.display = "none";
+  }
+  valueSearch.value = "";
+}
+
+}
+weatherApp();
 // Card open and close
 function cardOpenCloseFeatures() {
   // element selector
