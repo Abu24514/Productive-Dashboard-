@@ -1,182 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard 🍁</title>
 
-    <!--  fonts  -->
-       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Font Awesome icons link -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard 🍁</title>
 
-    <!-- ==== +++ External CSS file  +++ ====-->
-    <link rel="stylesheet" href="style.css" />
-     
-    <!-- <link rel="stylesheet" href="char.css"> -->
-     
-  </head>
-  <body>
-    <!-- =================== NAVBAR =================== -->
-    <nav>
-      <div id="nav-list">
-        <!-- App logo/icon with title -->
-        <i class="fa-solid fa-lightbulb"></i>
-        <p>Productive Dashboard</p>
-      </div>
-      <!-- Theme toggle button (light/dark mode) -->
-      <div class="change">
-        <input type="checkbox" id="checkbox" />
-        <label for="checkbox" class="toggleBtn"></label>
-      </div>
-    </nav>
+  <!--  fonts  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome icons link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 
-    <!-- =================== MAIN CONTENT =================== -->
-    <main>
-      <!-- Section: Date and Weather Display -->
-       <section class="view-1">
-        <!-- date ,time , year and month -->
-        <div class="date  uper">
-             <div class="time">1:00 PM</div>
-             <div class="DateYear">
-              <div class="Date">4 May</div>
-              <div class="year">2024</div>
-             </div>
-          <div class="week">Sunday</div>
-        
+  <!-- ==== +++ External CSS file  +++ ====-->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- <link rel="stylesheet" href="char.css"> -->
+
+</head>
+
+<body>
+  <!-- =================== NAVBAR =================== -->
+  <nav>
+    <div id="nav-list">
+      <!-- App logo/icon with title -->
+      <i class="fa-solid fa-lightbulb"></i>
+      <p>Productive Dashboard</p>
+    </div>
+    <!-- Theme toggle button (light/dark mode) -->
+    <div class="change">
+      <input type="checkbox" id="checkbox" />
+      <label for="checkbox" class="toggleBtn"></label>
+    </div>
+  </nav>
+
+  <!-- =================== MAIN CONTENT =================== -->
+  <main>
+    <!-- Section: Date and Weather Display -->
+    <section class="view-1">
+      <!-- date ,time , year and month -->
+      <div class="date  uper">
+        <div class="time">1:00 PM</div>
+        <div class="DateYear">
+          <div class="Date">4 May</div>
+          <div class="year">2024</div>
         </div>
-       
-        <!-- weather aplications -->
-        <div class="weather uper">
-           <div class="weather-container">
-            <div class="name">
-                <span class="w-n">London</span>
-                <img src="https://flagsapi.com/GB/shiny/32.png" alt="country">
-              </div>
-            <!--  search city name  -->
-            <form class="citySearch">
-              <input type="text" class="cityname" placeholder="City name........">
-              <button class="s-btn">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </form>
-           </div>
-             <!-- weather-box -->
-             <div class="weather-box">
-              <div class="weather-left-box box-below">
-                <div class="icon w-l-b">
-                  <img src="https://openweathermap.org/img/wn/10d@4x.png" />
-                </div>
-                <div class="tempAnddesc w-l-b">
-                  <span class="temp">30°C</span>
-                  <p class="desc">overcast clouds</p>
-                </div>
-              </div>
-               <div class="weather-right-box box-below">
-                     <div class="cloud  w-r-b">
-                      <span>clouds</span>
-                      <i class="fa-solid fa-cloud"></i>
-                      <span id="cloud-pr">98%</span>
-              </div>
-              <div class="humidity w-r-b ">
-                    <span>humidity</span>
-                    <i class="fa-solid fa-droplet"></i>
-                    <span id="humidity-pr">98%</span>
-              </div>
-              <div class="wind  w-r-b">
-                  <span>pressure</span>
-                  <i class="fa-solid fa-gauge"></i>
-                 <span id="pressure">1011 hPa</span>
-              </div>
+        <div class="week">Sunday</div>
 
-               </div>
-             </div>
-             <div class="w-image">
-           <div class="w-s-imgAndPara">
-               <img src="https://cdn.pixabay.com/photo/2014/04/03/10/54/detective-311684_1280.png" alt="">
-                <p>Search City name</p>
-             </div>
-            
-               </div>
-              </div>
+      </div>
 
-             
-        </div>
-       </section>
-      <!-- Section: Marquee Scrolling Text (features preview) -->
-      <section class="view-2">
-        <div class="marquee">
-          <!-- First loop of text -->
-          <div class="text">
-            <p class="t-p">Todo List</p>
-            <p>Motivation Quotes</p>
-            <p class="t-p">Daily Planner</p>
-            <p>Pomodore</p>
+      <!-- weather aplications -->
+      <div class="weather uper">
+        <div class="weather-container">
+          <div class="name">
+            <span class="w-n">London</span>
+            <img src="https://flagsapi.com/GB/shiny/32.png" alt="country">
           </div>
-          <!-- Second loop of text (for infinite scroll effect) -->
-          <div class="text">
-            <p class="t-p">Todo List</p>
-            <p>Motivation Quotes</p>
-            <p class="t-p">Daily Planner</p>
-            <p>Pomodore</p>
+          <!--  search city name  -->
+          <form class="citySearch">
+            <input type="text" class="cityname" placeholder="City name........">
+            <button class="s-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+        <!-- weather-box -->
+        <div class="weather-box">
+          <div class="weather-left-box box-below">
+            <div class="icon w-l-b">
+              <img src="https://openweathermap.org/img/wn/10d@4x.png" />
+            </div>
+            <div class="tempAnddesc w-l-b">
+              <span class="temp">30°C</span>
+              <p class="desc">overcast clouds</p>
+            </div>
+          </div>
+          <div class="weather-right-box box-below">
+            <div class="cloud  w-r-b">
+              <span>clouds</span>
+              <i class="fa-solid fa-cloud"></i>
+              <span id="cloud-pr">98%</span>
+            </div>
+            <div class="humidity w-r-b ">
+              <span>humidity</span>
+              <i class="fa-solid fa-droplet"></i>
+              <span id="humidity-pr">98%</span>
+            </div>
+            <div class="wind  w-r-b">
+              <span>pressure</span>
+              <i class="fa-solid fa-gauge"></i>
+              <span id="pressure">1011 hPa</span>
+            </div>
+
           </div>
         </div>
-      </section>
+        <div class="w-image">
+          <div class="w-s-imgAndPara">
+            <img src="https://cdn.pixabay.com/photo/2014/04/03/10/54/detective-311684_1280.png" alt="">
+            <p>Search City name</p>
+          </div>
 
-      <!-- Section: Feature Cards -->
-      <section class="allElems">
-        <!-- Card 01 - Todo List -->
-        
-        <div class="todo elem" id="0">
-           <div class="heading-boder"></div>
-         <img
-            src="https://cdn.leonardo.ai/users/c203c555-cc99-4802-b889-49194b5c18de/generations/e5e92692-e261-47ee-b372-2aaf2d729263/segments/4:4:1/Lucid_Origin_A_flat_vectorstyle_digital_illustration_of_two_ha_3.jpg"
-            alt="To-do list image"
-          />
-          <h2>To do List</h2>
         </div>
+      </div>
 
-        <!-- Card 02 - Motivation -->
-        <div class="moti elem" id="1">
-              <div class="heading-boder"></div>
-          <img
-            src="https://i.pinimg.com/736x/99/22/2d/99222deb9a07a156055eddf35fd88af0.jpg"
-            alt="Motivational image"
-          />
-          <h2>Motivation</h2>
+
+      </div>
+    </section>
+    <!-- Section: Marquee Scrolling Text (features preview) -->
+    <section class="view-2">
+      <div class="marquee">
+        <!-- First loop of text -->
+        <div class="text">
+          <p class="t-p">Todo List</p>
+          <p>Motivation Quotes</p>
+          <p class="t-p">Daily Planner</p>
+          <p>Pomodore</p>
         </div>
-
-        <!-- Card 03 - Daily Planner -->
-        <div class="daily elem" id="2">
-              <div class="heading-boder"></div>
-          <img
-            src="https://i.pinimg.com/736x/56/23/46/5623464dc03e01b13f44c757d8aeb8db.jpg"
-            alt="Daily planner image"
-          />
-          <h2>Daily Planner</h2>
+        <!-- Second loop of text (for infinite scroll effect) -->
+        <div class="text">
+          <p class="t-p">Todo List</p>
+          <p>Motivation Quotes</p>
+          <p class="t-p">Daily Planner</p>
+          <p>Pomodore</p>
         </div>
+      </div>
+    </section>
 
-        <!-- Card 04 - Pomodoro Timer -->
-        <div class="pomo elem" id="3">
-              <div class="heading-boder"></div>
-          <img
-            src="https://i.pinimg.com/1200x/f4/a5/55/f4a555aad8d42d6ff4f63fac2514593d.jpg"
-            alt="Pomodoro timer image"
-          />
-          <h2>Pomodore</h2>
-        </div>
-      </section>
+    <!-- Section: Feature Cards -->
+    <section class="allElems">
+      <!-- Card 01 - Todo List -->
 
-      <!-- ++++++++++++++++ each page++++++++++++++++++ -->
+      <div class="todo elem" id="0">
+        <div class="heading-boder"></div>
+        <img
+          src="https://cdn.leonardo.ai/users/c203c555-cc99-4802-b889-49194b5c18de/generations/e5e92692-e261-47ee-b372-2aaf2d729263/segments/4:4:1/Lucid_Origin_A_flat_vectorstyle_digital_illustration_of_two_ha_3.jpg"
+          alt="To-do list image" />
+        <h2>To do List</h2>
+      </div>
 
-       <!-- Section: 01-FullElems  Todo List -->
-      <section class="fullElems Todo-list-fullPage">
-        <button class="back" id="0">Close</button>
-        <h2>Your Personal Todo List 🍂</h2>
-       <!-- todos-container -->
+      <!-- Card 02 - Motivation -->
+      <div class="moti elem" id="1">
+        <div class="heading-boder"></div>
+        <img src="https://i.pinimg.com/736x/99/22/2d/99222deb9a07a156055eddf35fd88af0.jpg" alt="Motivational image" />
+        <h2>Motivation</h2>
+      </div>
+
+      <!-- Card 03 - Daily Planner -->
+      <div class="daily elem" id="2">
+        <div class="heading-boder"></div>
+        <img src="https://i.pinimg.com/736x/56/23/46/5623464dc03e01b13f44c757d8aeb8db.jpg" alt="Daily planner image" />
+        <h2>Daily Planner</h2>
+      </div>
+
+      <!-- Card 04 - Pomodoro Timer -->
+      <div class="pomo elem" id="3">
+        <div class="heading-boder"></div>
+        <img src="https://i.pinimg.com/1200x/f4/a5/55/f4a555aad8d42d6ff4f63fac2514593d.jpg"
+          alt="Pomodoro timer image" />
+        <h2>Pomodore</h2>
+      </div>
+    </section>
+
+    <!-- ++++++++++++++++ each page++++++++++++++++++ -->
+
+    <!-- Section: 01-FullElems  Todo List -->
+    <section class="fullElems Todo-list-fullPage">
+      <button class="back" id="0">Close</button>
+      <h2>Your Personal Todo List 🍂</h2>
+      <!-- todos-container -->
       <div class="todo-container">
         <!-- Add task -->
         <div class="addtask">
@@ -210,7 +202,7 @@
               </button>
             </div>
           </div>
-            <!-- 02 -->
+          <!-- 02 -->
           <div class="task">
             <div class="checkAndHead">
               <input id=" checkout" class="check" type="checkbox" />
@@ -227,63 +219,65 @@
               </button>
             </div>
           </div>
-      
+
 
         </div>
       </div>
 
-      </section>
+    </section>
 
-      <!-- Section: 02-FullElems  motivation -->
-      <section class="fullElems motivation-fullPage">
-        <button class="back" id="1">Close</button>
-        <h2>Motivation Quotes</h2>
-               <div class="motivational-container">
-            <div class="motivation-card">
-                <div class="mt-top">
-                    <span class="quote-tag">Quotes</span>
-                    <svg class="quote-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20,50 Q20,30 35,25 Q40,35 30,45 Q25,50 25,60 L35,60 L35,75 L15,75 L15,60 Q15,50 20,50 Z" fill="currentColor"/>
-                        <path d="M60,50 Q60,30 75,25 Q80,35 70,45 Q65,50 65,60 L75,60 L75,75 L55,75 L55,60 Q55,50 60,50 Z" fill="currentColor"/>
-                    </svg>
-                </div>
-                
-                <p id="motivationText">The only way to do great work is to love what you do.</p>
+    <!-- Section: 02-FullElems  motivation -->
+    <section class="fullElems motivation-fullPage">
+      <button class="back" id="1">Close</button>
+      <h2>Motivation Quotes</h2>
+      <div class="motivational-container">
+        <div class="motivation-card">
+          <div class="mt-top">
+            <span class="quote-tag">Quotes</span>
+            <svg class="quote-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20,50 Q20,30 35,25 Q40,35 30,45 Q25,50 25,60 L35,60 L35,75 L15,75 L15,60 Q15,50 20,50 Z"
+                fill="currentColor" />
+              <path d="M60,50 Q60,30 75,25 Q80,35 70,45 Q65,50 65,60 L75,60 L75,75 L55,75 L55,60 Q55,50 60,50 Z"
+                fill="currentColor" />
+            </svg>
+          </div>
 
-                <div class="bottom-row">
-                    <span id="authorTag" class="author-tag">- Steve Jobs</span>
-                    <div class="nav-buttons">
-                        <button id="prevQuote" aria-label="Previous quote">⟨</button>
-                        <button id="nextQuote" aria-label="Next quote">⟩</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </section>
-      <!-- Section: 03-FullElems Planner   -->
-      <section class="fullElems daily-planner-fullPage">
-        <button class="back" id="2">Close</button>
-        <h2>Daily Planner</h2>
-      </section>
+          <p id="motivationText">The only way to do great work is to love what you do.</p>
 
-      <!-- Section: 04- FullElems  Pomodore-->
-      <section class="fullElems pomodore-fullPage">
-        <button class="back" id="3">Close</button>
-         <h2>  focus on Study </h2>
-          <div class="pomodore-container">
-            <div class="pomo-timer">
-              <h3 class="session">Work Session</h3>
-                <p>25:00</p>
-               <div class="pomo-control">
-                 <button id="start-timer" class="pomo-c-btn">Start</button>
-                <button id="pause-timer" class="pomo-c-btn">Pause</button>
-                <button id="reset-timer" class="pomo-c-btn">Reset</button>
-               </div>
+          <div class="bottom-row">
+            <span id="authorTag" class="author-tag">- Steve Jobs</span>
+            <div class="nav-buttons">
+              <button id="prevQuote" aria-label="Previous quote">⟨</button>
+              <button id="nextQuote" aria-label="Next quote">⟩</button>
             </div>
           </div>
-      </section>
-    </main>
-    <!-- ==== +++ External JS file  +++ ====-->
-    <script src="script.js"></script>
-  </body>
+        </div>
+      </div>
+    </section>
+    <!-- Section: 03-FullElems Planner   -->
+    <section class="fullElems daily-planner-fullPage">
+      <button class="back" id="2">Close</button>
+      <h2>Daily Planner</h2>
+    </section>
+
+    <!-- Section: 04- FullElems  Pomodore-->
+    <section class="fullElems pomodore-fullPage">
+      <button class="back" id="3">Close</button>
+      <h2> focus on Study </h2>
+      <div class="pomodore-container">
+        <div class="pomo-timer">
+          <h3 class="session">Work Session</h3>
+          <p>25:00</p>
+          <div class="pomo-control">
+            <button id="start-timer" class="pomo-c-btn">Start</button>
+            <button id="pause-timer" class="pomo-c-btn">Pause</button>
+            <button id="reset-timer" class="pomo-c-btn">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- ==== +++ External JS file  +++ ====-->
+  <script src="script.js"></script>
+</body>
 </html>

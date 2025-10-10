@@ -12,7 +12,9 @@
   --color-text: #ffffff; /* Default text color  and toggle-btn */
   --color-accent: #a0c14d; /* Accent (buttons, highlights) */
   --color-card-hover: rgba(0, 0, 0, 0.45); /* Card hover shadow */
-  --toggle-btn--circle: #0acf83; /* also ues in pomo work section */
+  --toggle-btn--circle: #0acf83; /* also ues in pomo 
+  work section */
+  --td-con: linear-gradient(135deg, #273346 0%, #bebebe 100%);
   --btn-close: #c41b1b;
   --btn-add: #ff7262;
   --btn-delete: #f74444;
@@ -308,7 +310,7 @@ main {
   align-items: center;
   border-radius: 1.2rem;
   border: 1.5px solid var(--color-text);
-  width:100%;
+  width: 100%;
   padding: 0.2rem 0.56rem;
   position: relative;
   gap: 0.5rem;
@@ -506,11 +508,7 @@ main {
 /* card-text -boder */
 .heading-boder {
   /* background-color: var(--time-bg); */
-  background-image: linear-gradient(
-    to left,
-    rgba(23, 23, 23, 0.932),
-   #36c758
-  );
+  background-image: linear-gradient(to left, rgba(23, 23, 23, 0.932), #36c758);
   border-radius: 0 0 1rem 1rem;
   width: 100%;
   height: 34px;
@@ -675,7 +673,7 @@ main {
 /* add tasks... */
 .Todo-list-fullPage .todo-container .addtask {
   border-radius: 1rem;
-  background-color: var(--color-accent);
+  background: var(--td-con);
   grid-area: todo-left;
 }
 .Todo-list-fullPage .todo-container .addtask form {
@@ -690,7 +688,7 @@ main {
   padding: 0.8rem;
   border-radius: 0.6rem;
   border: none;
-  background-color: var(--color-bg);
+  background:var(--time-bg);
   color: var(--color-text);
   outline: none;
   width: 100%;
@@ -702,7 +700,7 @@ textarea {
   padding: 0.8rem;
   border-radius: 0.6rem;
   border: none;
-  background-color: var(--color-bg);
+  background:var(--time-bg);
   color: var(--color-text);
   outline: none;
   width: 100%;
@@ -757,7 +755,7 @@ textarea::placeholder {
   padding: clamp(0.2rem, 2vw, 0.8rem);
   border-radius: clamp(0.2rem, 2vw, 0.6rem);
   border: none;
-  background-color: var(--btn-edit);
+  background: var(--mt-q-auth);
   color: var(--color-text);
   font-weight: bold;
   outline: none;
@@ -800,7 +798,7 @@ textarea::placeholder {
 .Todo-list-fullPage .todo-container .alltasks {
   border-radius: 1rem 0 0 1rem;
   grid-area: todo-right;
-  background-color: var(--color-accent);
+  background: var(--td-con);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -811,8 +809,7 @@ textarea::placeholder {
 }
 /* Single task container */
 .alltasks .task {
-  /* background-color: red; */
-  background: var(--color-bg);
+  background:var(--time-bg) ;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -932,7 +929,7 @@ textarea::placeholder {
   border-radius: 5px;
 }
 .alltasks::-webkit-scrollbar-thumb {
-  background: var(--btn-edit);
+  background: var(--color-accent);
   border-radius: 5px;
 }
 
@@ -956,7 +953,7 @@ textarea::placeholder {
   color: var(--color-text);
   border-radius: 1rem;
   padding: 1.5rem;
-  width:100%;
+  width: 100%;
   height: 470px;
   display: flex;
   flex-direction: column;
@@ -1001,12 +998,11 @@ textarea::placeholder {
   font-style: italic;
   font-weight: 600;
   text-align: center;
-  font-size: clamp(1.2rem , 3vw , 1.5rem);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
   min-height: 120px;
-  color: var(--text-input2);
+  color: var(--mt-q-auth);
   padding: 0.5rem;
   line-height: 1.6;
-  opacity: 0.9;
   transition: opacity 0.3s ease-in-out;
   position: relative;
   z-index: 1;
@@ -1054,10 +1050,9 @@ textarea::placeholder {
   background: var(--btn-close);
 }
 
-      .nav-buttons button:active {
-            transform: scale(0.95);
-        }
-
+.nav-buttons button:active {
+  transform: scale(0.95);
+}
 
 .author-tag {
   font-size: clamp(0.2rem, 5vw, 1.5rem);
@@ -1065,7 +1060,6 @@ textarea::placeholder {
   color: var(--color-bg);
   font-family: "Gilroy", sans-serif;
   font-weight: 600;
- 
 }
 
 /* --------------  Pomodore Page-------------- */
@@ -1340,7 +1334,7 @@ textarea::placeholder {
     grid-template-rows: 1fr;
     grid-template-areas: "todo-left todo-right";
   }
-  .motivation-card{
+  .motivation-card {
     height: 450px;
     width: 65%;
   }
