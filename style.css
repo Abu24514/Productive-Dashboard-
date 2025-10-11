@@ -1010,9 +1010,6 @@ textarea::placeholder {
   align-items: center;
   justify-content: center;
 }
-.motivation-card p.fade {
-  opacity: 0;
-}
 .bottom-row {
   display: flex;
   justify-content: space-between;

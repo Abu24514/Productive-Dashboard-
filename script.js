@@ -149,6 +149,60 @@ function rippleEffect() {
 }
 rippleEffect();
 
+// Motivational Quotes Apps... 
+
+function MotivationalApp(){
+  
+const motivationText = document.getElementById("motivationText");
+const authorTag = document.getElementById("authorTag");
+const prevBtn = document.getElementById("prevQuote");
+const nextBtn = document.getElementById("nextQuote");
+
+let quotes = [];
+let currentIndex = -1;
+
+async function getQuote() {
+ try {
+   const res = await fetch("https://api.quotable.io/random");
+  const data = await res.json();
+  quotes.push({ text: data.content, author: data.author });
+  currentIndex = quotes.length - 1;
+  showQuote();
+ } catch (err) {
+   console.log("Error fetching quote:", err);
+      motivationText.textContent = "Failed to load quote. Try again!";
+      authorTag.textContent = "";
+ }
+}
+
+function showQuote() {
+  motivationText.textContent = quotes[currentIndex].text;
+  authorTag.textContent = `- ${quotes[currentIndex].author}`;
+}
+
+nextBtn.addEventListener("click", () => {
+  if (currentIndex === quotes.length - 1) {
+    getQuote(); 
+  } else {
+    currentIndex++;
+    showQuote();
+  }
+});
+
+prevBtn.addEventListener("click", () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    showQuote();
+  }
+});
+
+// load first quote on start
+getQuote();
+
+
+}
+MotivationalApp();
+
 // pomodore Timer
 function pomodoreTimer() {
   let time = document.querySelector(".pomo-timer p");
