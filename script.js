@@ -164,8 +164,186 @@ function showToast(message, type = "success") {
     setTimeout(() => toast.remove(), 300);
   }, 3000);
 }
-// Motivational Quotes Apps... 
+// ........... Todo List Apps.........//
+function todosApp() {
+  const taskInput = document.getElementById("task-input");
+  const textareaInput = document.getElementById("textareaInput");
+  const impCheck = document.getElementById("impCheck");
+  const alltasksContainer = document.querySelector(".alltasks");
+  const emptyImage = document.getElementById("empty-image");
+  const form = document.querySelector(".addtask form");
 
+  // Tasks array
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  // Initialize
+  document.addEventListener("DOMContentLoaded", () => {
+    renderTasks();
+    updateEmptyState();
+  });
+
+  // Form submit handler
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    addTask();
+  });
+
+  // Add task function
+  function addTask() {
+    const taskText = taskInput.value.trim();
+    const taskDetails = textareaInput.value.trim();
+
+    if (!taskText) {
+      showToast("Please enter a task ✍🏻", "alert");
+      return;
+    }
+
+    const task = {
+      id: Date.now(),
+      text: taskText,
+      details: taskDetails,
+      important: impCheck.checked,
+      completed: false,
+    };
+
+    tasks.push(task);
+    saveTasks();
+    renderTasks();
+    updateEmptyState();
+
+    // Reset form
+    taskInput.value = "";
+    textareaInput.value = "";
+    impCheck.checked = false;
+    showToast("Task added ✅", "success");
+  }
+
+  // Render all tasks
+  function renderTasks() {
+    const existingTasks = alltasksContainer.querySelectorAll(".task");
+    existingTasks.forEach((task) => task.remove());
+
+    tasks.forEach((task) => {
+      const taskElement = createTaskElement(task);
+      alltasksContainer.insertBefore(taskElement, emptyImage);
+    });
+  }
+
+  // Create task element
+  function createTaskElement(task) {
+    const taskDiv = document.createElement("div");
+    taskDiv.className = `task ${task.completed ? "completed" : ""}`;
+    taskDiv.dataset.id = task.id;
+
+    taskDiv.innerHTML = `
+      <div class="checkAndHead">
+        <input class="check" type="checkbox" ${task.completed ? "checked" : ""} />
+        <h5 class="task-title">
+          ${task.text}
+          ${task.important ? "<span>imp</span>" : ""}
+        </h5>
+      </div>
+      <div class="delAndEditBtn">
+        <button class="editBtn">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button class="deleteBtn">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+    `;
+
+    const checkbox = taskDiv.querySelector(".check");
+    const editBtn = taskDiv.querySelector(".editBtn");
+    const deleteBtn = taskDiv.querySelector(".deleteBtn");
+    const taskTitle = taskDiv.querySelector(".task-title");
+
+    checkbox.addEventListener("change", () => toggleComplete(task.id));
+    editBtn.addEventListener("click", () => editTask(task.id));
+    deleteBtn.addEventListener("click", () => deleteTask(task.id, false));
+
+    // Show details popup on title click
+    taskTitle.addEventListener("click", () => showDetailsPopup(task));
+
+    return taskDiv;
+  }
+
+  // Toggle task completion
+  function toggleComplete(id) {
+    const task = tasks.find((t) => t.id === id);
+    if (task) {
+      task.completed = !task.completed;
+      saveTasks();
+      renderTasks();
+    }
+  }
+
+  // Edit task
+  function editTask(id) {
+    const task = tasks.find((t) => t.id === id);
+    if (task) {
+      taskInput.value = task.text;
+      textareaInput.value = task.details;
+      impCheck.checked = task.important;
+
+      deleteTask(id, true);
+      taskInput.focus();
+      showToast("Editing task...", "alert");
+    }
+  }
+
+  // Delete task
+  function deleteTask(id, fromEdit = false) {
+    tasks = tasks.filter((t) => t.id !== id);
+    saveTasks();
+    renderTasks();
+    updateEmptyState();
+
+    if (!fromEdit) {
+      showToast("Task deleted ⚔️", "error");
+    }
+  }
+
+  // Show task details popup
+  const showDetailsPopup = (task) => {
+    const oldPopup = document.querySelector(".details-popup");
+    if (oldPopup) oldPopup.remove();
+
+    const popup = document.createElement("div");
+    popup.classList.add("details-popup");
+    popup.innerHTML = `
+      <div class="popup-content">
+        <h3>${task.text}</h3>
+        <p>${task.details || "No details added"}</p>
+        <button class="close-details">Close</button>
+      </div>
+    `;
+
+    document.body.appendChild(popup);
+    setTimeout(() => popup.classList.add("show"), 10);
+
+    popup.querySelector(".close-details").addEventListener("click", () => {
+      popup.classList.remove("show");
+      setTimeout(() => popup.remove(), 300);
+    });
+  };
+
+  // Update empty state visibility
+  function updateEmptyState() {
+    if (tasks.length === 0) {
+      emptyImage.style.display = "flex";
+    } else {
+      emptyImage.style.display = "none";
+    }
+  }
+
+  // Save tasks to localStorage
+  function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+}
+todosApp();
+// ........... Motivational Page feature..........//
 function MotivationalApp(){
   
 const motivationText = document.getElementById("motivationText");
