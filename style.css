@@ -1018,7 +1018,7 @@ textarea::placeholder {
 .toast {
   position: fixed;
   top: 20px;
-  right: 50%;
+  right: 20px;
   background: var(--mt-q-auth);
   color: var(--color-text);
   padding: 12px 20px;

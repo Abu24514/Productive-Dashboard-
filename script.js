@@ -395,6 +395,57 @@ getQuote();
 
 }
 MotivationalApp();
+// ........... Daily Planner..........//
+function dailyPlanner(){
+const planForm = document.querySelector(".planner-form");
+const planTask = document.querySelector('.plan-task');
+
+  
+planForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  addPlan();
+});
+
+function addPlan() {
+  const planTime = document.querySelector("#planTime").value;
+  const planText = document.querySelector("#planTask").value.trim();
+  
+  if (!planText) return;
+
+  const formattedTime = convertTo12Hour(planTime);
+
+  const li = document.createElement('li');
+  li.innerHTML = `
+    <span class="plan-span">${formattedTime}</span>
+    <div class="plan-con">
+      <p class="plan-p">${planText}</p>
+      <button class="deleteBtn">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+  `;
+
+  // Add delete functionality
+  li.querySelector('.deleteBtn').addEventListener('click', () => li.remove());
+
+  // Append to list
+  planTask.append(li);
+
+  // Clear form
+  planForm.reset();
+}
+
+// Convert 24-hour time to 12-hour with AM/PM
+function convertTo12Hour(time) {
+  let [hours, minutes] = time.split(':');
+  hours = parseInt(hours);
+  
+  const period = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12; // Convert 0 to 12, and 13-23 to 1-11
+  return `${hours.toString().padStart("2" ,"0")}:${minutes} ${period}`;
+}
+}
+dailyPlanner();
 
 // pomodore Timer
 function pomodoreTimer() {
