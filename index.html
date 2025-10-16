@@ -244,22 +244,21 @@
         </div>
       </section>
       <!-- Section: 03-FullElems Planner   -->
-         <section class="fullElems daily-planner-fullPage">
+            <section class="fullElems daily-planner-fullPage">
         <button class="back" id="2">Close</button>
         <h2>Daily Planner</h2>
         <div class="plannerDiv">
           <form class="planner-form">
-          <input type="time" id="planTime"  />
+          <input type="time" id="planTime" required />
         <div class="planinput">
-         <input type="text" id="planTask" placeholder="Enter plan..."  />
+         <input type="text" id="planTask" placeholder="Enter plan..." required autocomplete="off"  />
           <button class="plan-add">Add</button>
       </div>
   </form>
-
         <div class="plannerscoller">
          <div class="plannerBelow">
            <ul class="plan-task">
-              <li>
+              <!-- <li>
                  <span class="plan-span">9:50 PM</span>
                   <div class="plan-con">
                     <p class="plan-p">ruko subah utho </p>
@@ -267,8 +266,7 @@
                     <i class="fa-solid fa-trash"></i>
                          </button>
                   </div>
-              </li>
-          
+              </li> -->
            </ul>
          </div>
         </div>
