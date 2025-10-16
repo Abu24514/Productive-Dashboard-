@@ -12,6 +12,11 @@
     rel="stylesheet">
   <!-- Font Awesome icons link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+        
+  <!-- remix icon -->
+ <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"/>
 
   <!-- ==== +++ External CSS file  +++ ====-->
   <link rel="stylesheet" href="style.css" />
@@ -31,7 +36,10 @@
       <!-- Theme toggle button (light/dark mode) -->
       <div class="change">
         <input type="checkbox" id="checkbox" />
-        <label for="checkbox" class="toggleBtn"></label>
+        <label for="checkbox" class="toggleBtn">
+          <i class="ri-moon-line"  id="moon"></i>
+         <i class="ri-sun-fill" id="sun"></i>
+        </label>
       </div>
     </nav>
 
@@ -216,7 +224,6 @@
       </div>
 
       </section>
-
       <!-- Section: 02-FullElems  motivation -->
       <section class="fullElems motivation-fullPage">
         <button class="back" id="1">Close</button>
@@ -244,7 +251,7 @@
         </div>
       </section>
       <!-- Section: 03-FullElems Planner   -->
-            <section class="fullElems daily-planner-fullPage">
+     <section class="fullElems daily-planner-fullPage">
         <button class="back" id="2">Close</button>
         <h2>Daily Planner</h2>
         <div class="plannerDiv">
