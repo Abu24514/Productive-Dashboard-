@@ -1,43 +1,140 @@
-// Call every second
-setInterval(timeDate, 1000);
-// Dates and Time
-function timeDate() {
-  // Select DOM elements
-  let Time = document.querySelector(".date .time");
-  let week = document.querySelector(".date .week");
-  let year = document.querySelector(".date .year");
-  let tarikDiv = document.querySelector(".date .Date");
+//...............Add dark ORlight theme..........//
+function darkOrLightTheme() {
+  const applyTheme = (theme) => {
+    document.body.className = theme;
+  };
 
-  const totalDaysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
+  // Initial theme
+  applyTheme(
+    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+  );
 
-  // Get current date and time
-  let date = new Date();
-  let dayOfWeek = totalDaysOfWeek[date.getDay()];
-  let saal = date.getFullYear();
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  let seconds = date.getSeconds();
-  let tarik = date.getDate();
-  let month = monthNames[date.getMonth()];
+  // Toggle button
+  document.querySelector(".toggleBtn").addEventListener("click", () => {
+    applyTheme(document.body.classList.contains("dark") ? "light" : "dark");
+  });
 
-  // Update text
-  week.textContent = dayOfWeek;
-  year.textContent = saal;
-  tarikDiv.textContent = `${tarik} ${month}`;
-
-  // Format hours for 12-hour clock
-  let meridian = hours >= 12 ? "PM" : "AM";
-  let formattedHours = hours % 12 || 12; // 0 ko 12 me convert karega
-
-  // Update time display
-  Time.textContent = 
-    `${String(formattedHours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${meridian}`;
+  // System theme change
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (e) => {
+      applyTheme(e.matches ? "dark" : "light");
+    });
 }
-// Weather application
+darkOrLightTheme();
+
+function cardOpenCloseFeatures() {
+  // Scroll lock karne ka function
+  function lockScroll() {
+    const scrollY = window.scrollY; // current scroll position
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    document.body.dataset.scrollY = scrollY; // store for later
+  }
+
+  // Scroll unlock karne ka function
+  function unlockScroll() {
+    const scrollY = document.body.dataset.scrollY || 0;
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    window.scrollTo(0, parseInt(scrollY)); // restore position
+    document.body.removeAttribute("data-scroll-y");
+  }
+
+  // element selector
+
+  let allElems = document.querySelectorAll(".elem");
+  let fullElemPage = document.querySelectorAll(".fullElems");
+  let fullElemPageBtn = document.querySelectorAll(".fullElems .back");
+
+  // open card
+  allElems.forEach(function (card) {
+    card.addEventListener("click", function () {
+      fullElemPage[card.id].style.display = "block";
+      lockScroll();
+    });
+  });
+
+  // close card
+  fullElemPageBtn.forEach(function (back) {
+    back.addEventListener("click", function () {
+      fullElemPage[back.id].style.display = "none";
+      unlockScroll();
+    });
+  });
+}
+cardOpenCloseFeatures();
+//............ Dates and Time.............//
+function valueTime() {
+  function timeDate() {
+    // select
+    let Time = document.querySelector(".date .time");
+    let week = document.querySelector(".date .week");
+    let year = document.querySelector(".date .year");
+    let tarikDiv = document.querySelector(".date .Date");
+
+    const totalDaysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    let date = new Date();
+    let dayOfWeek = totalDaysOfWeek[date.getDay()];
+    let saal = date.getFullYear();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    let tarik = date.getDate();
+    let month = monthNames[date.getMonth()];
+
+    week.textContent = dayOfWeek;
+    year.textContent = saal;
+    tarikDiv.innerHTML = `${tarik} ${month}`;
+
+    if (hours >= 12) {
+      let displayHours = hours > 12 ? hours - 12 : 12;
+      Time.innerHTML = `${String(displayHours).padStart(2, "0")}:${String(
+        minutes
+      ).padStart(2, "0")}:${String(seconds).padStart(2, "0")} PM`;
+    } else {
+      let displayHours = hours === 0 ? 12 : hours;
+      Time.innerHTML = `${String(displayHours).padStart(2, "0")}:${String(
+        minutes
+      ).padStart(2, "0")}:${String(seconds).padStart(2, "0")} AM`;
+    }
+  }
+
+  setInterval(() => {
+    timeDate();
+  }, 1000);
+}
+valueTime();
+// ........... weather application..........//
 function weatherApp() {
   //  all selector----
   let city = document.querySelector(".name");
@@ -95,7 +192,7 @@ function weatherApp() {
         city.style.display = "flex";
         weatherEmptyImgebox.style.display = "none";
       } else {
-          errorSound.play();
+        errorSound.play();
         weather.classList.add("error");
         setTimeout(() => {
           weather.classList.remove("error");
@@ -110,44 +207,6 @@ function weatherApp() {
   }
 }
 weatherApp();
-
-// Card open and close
-function cardOpenCloseFeatures() {
-  // element selector
-
-  let allElems = document.querySelectorAll(".elem");
-  let fullElemPage = document.querySelectorAll(".fullElems");
-  let fullElemPageBtn = document.querySelectorAll(".fullElems .back");
-
-  // open card
-  allElems.forEach(function (card) {
-    card.addEventListener("click", function () {
-      fullElemPage[card.id].style.display = "block";
-    });
-  });
-
-  // close card
-  fullElemPageBtn.forEach(function (back) {
-    back.addEventListener("click", function () {
-      fullElemPage[back.id].style.display = "none";
-    });
-  });
-}
-cardOpenCloseFeatures();
-
-// ripple effect 
-function rippleEffect() {
-  const taskBtn = document.querySelector("#task-btn");
-
-  taskBtn.addEventListener("mouseover", function (e) {
-    const x = e.pageX - taskBtn.offsetLeft; // pageX - button's left position = X inside button
-    const y = e.pageY - taskBtn.offsetTop; // pageY - button's top position = Y inside button
-
-    taskBtn.style.setProperty("--posX", x + "px");
-    taskBtn.style.setProperty("--posY", y + "px");
-  });
-}
-rippleEffect();
 // ...........  Create a toster.........//
 function showToast(message, type = "success") {
   const toast = document.createElement("div");
@@ -164,6 +223,20 @@ function showToast(message, type = "success") {
     setTimeout(() => toast.remove(), 300);
   }, 3000);
 }
+
+function rippleEffect() {
+  const taskBtn = document.querySelector("#task-btn");
+
+  taskBtn.addEventListener("mouseover", function (e) {
+    const x = e.pageX - taskBtn.offsetLeft; // pageX - button's left position = X inside button
+    const y = e.pageY - taskBtn.offsetTop; // pageY - button's top position = Y inside button
+
+    taskBtn.style.setProperty("--posX", x + "px");
+    taskBtn.style.setProperty("--posY", y + "px");
+  });
+}
+rippleEffect();
+
 // ........... Todo List Apps.........//
 function todosApp() {
   const taskInput = document.getElementById("task-input");
@@ -237,7 +310,9 @@ function todosApp() {
 
     taskDiv.innerHTML = `
       <div class="checkAndHead">
-        <input class="check" type="checkbox" ${task.completed ? "checked" : ""} />
+        <input class="check" type="checkbox" ${
+          task.completed ? "checked" : ""
+        } />
         <h5 class="task-title">
           ${task.text}
           ${task.important ? "<span>imp</span>" : ""}
@@ -342,112 +417,279 @@ function todosApp() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 }
+
 todosApp();
+
 // ........... Motivational Page feature..........//
-function MotivationalApp(){
-  
-const motivationText = document.getElementById("motivationText");
-const authorTag = document.getElementById("authorTag");
-const prevBtn = document.getElementById("prevQuote");
-const nextBtn = document.getElementById("nextQuote");
+function MotivationalApp() {
+  const motivationText = document.getElementById("motivationText");
+  const authorTag = document.getElementById("authorTag");
+  const prevBtn = document.getElementById("prevQuote");
+  const nextBtn = document.getElementById("nextQuote");
 
-let quotes = [];
-let currentIndex = -1;
+  const quotes = [
+    {
+      text: "Believe you can and you're halfway there.",
+      author: "Theodore Roosevelt",
+    },
+    {
+      text: "The only way to do great work is to love what you do.",
+      author: "Steve Jobs",
+    },
+    {
+      text: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      author: "Winston Churchill",
+    },
+    {
+      text: "Don't watch the clock; do what it does. Keep going.",
+      author: "Sam Levenson",
+    },
+    {
+      text: "The future belongs to those who believe in the beauty of their dreams.",
+      author: "Eleanor Roosevelt",
+    },
+    {
+      text: "It does not matter how slowly you go as long as you do not stop.",
+      author: "Confucius",
+    },
+    {
+      text: "Everything you've ever wanted is on the other side of fear.",
+      author: "George Addair",
+    },
+    {
+      text: "I learned that courage was not the absence of fear, but the triumph over it.",
+      author: "Nelson Mandela",
+    },
+    {
+      text: "The only person you are destined to become is the person you decide to be.",
+      author: "Ralph Waldo Emerson",
+    },
+    {
+      text: "Go confidently in the direction of your dreams. Live the life you have imagined.",
+      author: "Henry David Thoreau",
+    },
+    {
+      text: "Testing leads to failure, and failure leads to understanding.",
+      author: "Burt Rutan",
+    },
+    {
+      text: "Programs must be written for people to read, and only incidentally for machines to execute.",
+      author: "Harold Abelson",
+    },
+    {
+      text: "If debugging is the process of removing bugs, then programming must be the process of putting them in.",
+      author: "Edsger Dijkstra",
+    },
+    {
+      text: "Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday's code.",
+      author: "Dan Salomon",
+    },
+    {
+      text: "You might not think that programmers are artists, but programming is an extremely creative profession. It's logic-based creativity.",
+      author: "John Romero",
+    },
+    {
+      text: "The best thing about a boolean is even if you are wrong, you are only off by a bit.",
+      author: "Anonymous",
+    },
+    {
+      text: "Java is to JavaScript what car is to Carpet.",
+      author: "Chris Heilmann",
+    },
+    {
+      text: "There are only two kinds of languages: the ones people complain about and the ones nobody uses.",
+      author: "Bjarne Stroustrup",
+    },
+    {
+      text: "It's not that I'm so smart, it's just that I stay with problems longer.",
+      author: "Albert Einstein",
+    },
+    {
+      text: "Experience is the name everyone gives to their mistakes.",
+      author: "Oscar Wilde",
+    },
+    {
+      text: "In order to be irreplaceable, one must always be different.",
+      author: "Coco Chanel",
+    },
+    {
+      text: "Life is not measured by the number of breaths we take, but by the moments that take our breath away.",
+      author: "Maya Angelou",
+    },
+    {
+      text: "Happiness is not something readymade. It comes from your own actions.",
+      author: "Dalai Lama",
+    },
+    {
+      text: "If you're offered a seat on a rocket ship, don't ask what seat! Just get on.",
+      author: "Sheryl Sandberg",
+    },
+    {
+      text: "You can't fall if you don't climb. But there's no joy in living your whole life on the ground.",
+      author: "Unknown",
+    },
+    {
+      text: "We must believe that we are gifted for something, and that this thing, at whatever cost, must be attained.",
+      author: "Marie Curie",
+    },
+    {
+      text: "Too many of us are not living our dreams because we are living our fears.",
+      author: "Les Brown",
+    },
+    {
+      text: "Challenges are what make life interesting and overcoming them is what makes life meaningful.",
+      author: "Joshua J. Marine",
+    },
+    {
+      text: "If you want to lift yourself up, lift up someone else.",
+      author: "Booker T. Washington",
+    },
+    {
+      text: "The best time to plant a tree was 20 years ago. The second best time is now.",
+      author: "Chinese Proverb",
+    },
+    {
+      text: "Your time is limited, don't waste it living someone else's life.",
+      author: "Steve Jobs",
+    },
+    {
+      text: "Whether you think you can or you think you can't, you're right.",
+      author: "Henry Ford",
+    },
+    {
+      text: "The only impossible journey is the one you never begin.",
+      author: "Tony Robbins",
+    },
+    {
+      text: "In the middle of difficulty lies opportunity.",
+      author: "Albert Einstein",
+    },
+    {
+      text: "What lies behind us and what lies before us are tiny matters compared to what lies within us.",
+      author: "Ralph Waldo Emerson",
+    },
+    {
+      text: "The only limit to our realization of tomorrow will be our doubts of today.",
+      author: "Franklin D. Roosevelt",
+    },
+    {
+      text: "Do what you can, with what you have, where you are.",
+      author: "Theodore Roosevelt",
+    },
+    {
+      text: "Act as if what you do makes a difference. It does.",
+      author: "William James",
+    },
+    {
+      text: "Success usually comes to those who are too busy to be looking for it.",
+      author: "Henry David Thoreau",
+    },
+    {
+      text: "Don't be pushed around by the fears in your mind. Be led by the dreams in your heart.",
+      author: "Roy T. Bennett",
+    },
+    {
+      text: "The only way to achieve the impossible is to believe it is possible.",
+      author: "Charles Kingsleigh",
+    },
 
-async function getQuote() {
- try {
-   const res = await fetch("https://api.quotable.io/random");
-  const data = await res.json();
-  quotes.push({ text: data.content, author: data.author });
-  currentIndex = quotes.length - 1;
+    {
+      text: "First, solve the problem. Then, write the code.",
+      author: "John Johnson",
+    },
+    {
+      text: "Code is like humor. When you have to explain it, it's bad.",
+      author: "Cory House",
+    },
+    { text: "Make it work, make it right, make it fast.", author: "Kent Beck" },
+    {
+      text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+      author: "Martin Fowler",
+    },
+    {
+      text: "The best error message is the one that never shows up.",
+      author: "Thomas Fuchs",
+    },
+    { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+    {
+      text: "Programming isn't about what you know; it's about what you can figure out.",
+      author: "Chris Pine",
+    },
+    {
+      text: "The most disastrous thing that you can ever learn is your first programming language.",
+      author: "Alan Kay",
+    },
+    {
+      text: "Walking on water and developing software from a specification are easy if both are frozen.",
+      author: "Edward V. Berard",
+    },
+    {
+      text: "Don't worry if it doesn't work right. If everything did, you'd be out of a job.",
+      author: "Mosher's Law",
+    },
+    { text: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
+    {
+      text: "Before software can be reusable it first has to be usable.",
+      author: "Ralph Johnson",
+    },
+    {
+      text: "It's not a bug – it's an undocumented feature.",
+      author: "Anonymous",
+    },
+    {
+      text: "The only way to learn a new programming language is by writing programs in it.",
+      author: "Dennis Ritchie",
+    },
+    {
+      text: "Debugging is twice as hard as writing the code in the first place.",
+      author: "Brian Kernighan",
+    },
+    { text: "Code never lies, comments sometimes do.", author: "Ron Jeffries" },
+    {
+      text: "Good code is its own best documentation.",
+      author: "Steve McConnell",
+    },
+    {
+      text: "Clean code always looks like it was written by someone who cares.",
+      author: "Robert C. Martin",
+    },
+    {
+      text: "The function of good software is to make the complex appear to be simple.",
+      author: "Grady Booch",
+    },
+  ];
+
+  let currentIndex = 0;
+
+  function showQuote() {
+    motivationText.textContent = quotes[currentIndex].text;
+    authorTag.textContent = `- ${quotes[currentIndex].author}`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < quotes.length - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0; // Loop back to first quote
+    }
+    showQuote();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = quotes.length - 1; // Loop to last quote
+    }
+    showQuote();
+  });
+
+  // Load first quote on start
   showQuote();
- } catch (err) {
-   console.log("Error fetching quote:", err);
-      motivationText.textContent = "Failed to load quote. Try again!";
-      authorTag.textContent = "";
- }
 }
 
-function showQuote() {
-  motivationText.textContent = quotes[currentIndex].text;
-  authorTag.textContent = `- ${quotes[currentIndex].author}`;
-}
-
-nextBtn.addEventListener("click", () => {
-  if (currentIndex === quotes.length - 1) {
-    getQuote(); 
-  } else {
-    currentIndex++;
-    showQuote();
-  }
-});
-
-prevBtn.addEventListener("click", () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    showQuote();
-  }
-});
-
-// load first quote on start
-getQuote();
-
-
-}
 MotivationalApp();
-// ........... Daily Planner..........//
-function dailyPlanner(){
-const planForm = document.querySelector(".planner-form");
-const planTask = document.querySelector('.plan-task');
-
-  
-planForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  addPlan();
-});
-
-function addPlan() {
-  const planTime = document.querySelector("#planTime").value;
-  const planText = document.querySelector("#planTask").value.trim();
-  
-  if (!planText) return;
-
-  const formattedTime = convertTo12Hour(planTime);
-
-  const li = document.createElement('li');
-  li.innerHTML = `
-    <span class="plan-span">${formattedTime}</span>
-    <div class="plan-con">
-      <p class="plan-p">${planText}</p>
-      <button class="deleteBtn">
-        <i class="fa-solid fa-trash"></i>
-      </button>
-    </div>
-  `;
-
-  // Add delete functionality
-  li.querySelector('.deleteBtn').addEventListener('click', () => li.remove());
-
-  // Append to list
-  planTask.append(li);
-
-  // Clear form
-  planForm.reset();
-}
-
-// Convert 24-hour time to 12-hour with AM/PM
-function convertTo12Hour(time) {
-  let [hours, minutes] = time.split(':');
-  hours = parseInt(hours);
-  
-  const period = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12 || 12; // Convert 0 to 12, and 13-23 to 1-11
-  return `${hours.toString().padStart("2" ,"0")}:${minutes} ${period}`;
-}
-}
-dailyPlanner();
-
-// pomodore Timer
+// ..................pomodore Timer.................//
 function pomodoreTimer() {
   let time = document.querySelector(".pomo-timer p");
   let startBtn = document.querySelector("#start-timer");
@@ -518,3 +760,53 @@ function pomodoreTimer() {
   resetBtn.addEventListener("click", resetTimer);
 }
 pomodoreTimer();
+// ........... Daily Planner..........//
+function dailyPlanner() {
+  const planForm = document.querySelector(".planner-form");
+  const planTask = document.querySelector(".plan-task");
+
+  planForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    addPlan();
+  });
+
+  function addPlan() {
+    const planTime = document.querySelector("#planTime").value;
+    const planText = document.querySelector("#planTask").value.trim();
+
+    if (!planText) return;
+
+    const formattedTime = convertTo12Hour(planTime);
+
+    const li = document.createElement("li");
+    li.innerHTML = `
+    <span class="plan-span">${formattedTime}</span>
+    <div class="plan-con">
+      <p class="plan-p">${planText}</p>
+      <button class="deleteBtn">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+  `;
+
+    // Add delete functionality
+    li.querySelector(".deleteBtn").addEventListener("click", () => li.remove());
+
+    // Append to list
+    planTask.append(li);
+
+    // Clear form
+    planForm.reset();
+  }
+
+  // Convert 24-hour time to 12-hour with AM/PM
+  function convertTo12Hour(time) {
+    let [hours, minutes] = time.split(":");
+    hours = parseInt(hours);
+
+    const period = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12; // Convert 0 to 12, and 13-23 to 1-11
+    return `${hours.toString().padStart("2", "0")}:${minutes} ${period}`;
+  }
+}
+dailyPlanner();
