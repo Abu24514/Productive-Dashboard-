@@ -28,6 +28,7 @@ body.dark {
   --pomo-card: #fbfbfb66;
   --time-bg: rgba(0, 0, 0, 0.49);
   --w-card: #ffffff5f;
+    --plan-p:#005cb1;
   
 }
 
@@ -51,6 +52,7 @@ body.light {
   --pomo-card: rgba(0, 0, 0, 0.49);
   --time-bg: #fbfbfb66;
   --w-card: #ffffff5f;
+  --plan-p:#0acf83;
 }
 /* font-family: 'Gilroy', sans-serif; */
 
@@ -1243,6 +1245,7 @@ textarea::placeholder {
   margin-top: clamp(1rem, 8vw, 2rem);
   padding: 0.5rem;
   border-radius: 0.6rem;
+  overflow-y: auto;
 }
 .planner-form {
   padding: 0.5rem;
@@ -1330,7 +1333,7 @@ textarea::placeholder {
   padding: 0 0.6rem;
 }
 .plan-span {
-  color: #0acf83;
+  color: var(--plan-p);
   font-size: 1rem;
   font-weight: 700;
 }
@@ -1340,19 +1343,15 @@ textarea::placeholder {
   word-wrap: break-word;
   color: var(--text-input2);
 }
-.plannerscoller {
-  overflow-y: auto;
-  width: 100%;
-  height: 78%;
+
+.plannerDiv::-webkit-scrollbar{
+  width:clamp(6px, 1vw, 8px);
 }
-.plannerscoller::-webkit-scrollbar {
-  width: clamp(6px, 1vw, 8px);
-}
-.plannerscoller::-webkit-scrollbar-track {
+.plannerDiv::-webkit-scrollbar-track{
   background: var(--plan-input);
   border-radius: 5px;
 }
-.plannerscoller::-webkit-scrollbar-thumb {
+.plannerDiv::-webkit-scrollbar-thumb{
   background: var(--color-bg);
   border-radius: 5px;
 }
